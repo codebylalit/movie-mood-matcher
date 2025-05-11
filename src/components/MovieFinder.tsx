@@ -63,6 +63,89 @@ const WatchProviders: React.FC<{ providers: WatchProviderData }> = ({ providers 
   );
 };
 
+const MovieCard: React.FC<{
+  movie: Movie;
+  isSelected: boolean;
+  onSelect: () => void;
+  isFavorite: boolean;
+  onToggleFavorite: () => void;
+  watchProviders: any;
+  mood: string;
+}> = ({ movie, isSelected, onSelect, isFavorite, onToggleFavorite, watchProviders, mood }) => {
+  return (
+    <motion.div
+      layout
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      whileHover={{ scale: 1.02 }}
+      transition={{ duration: 0.2 }}
+      className={`bg-gray-800 rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 ${
+        isSelected ? 'ring-2 ring-blue-500' : ''
+      }`}
+      onClick={onSelect}
+    >
+      <div className="relative group">
+        <img
+          src={getImageUrl(movie.poster_path)}
+          alt={movie.title}
+          className="w-full aspect-[2/3] object-cover transition-opacity group-hover:opacity-75"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+        <div className="absolute top-2 right-2 flex space-x-2">
+          <motion.button 
+            whileTap={{ scale: 0.9 }}
+            onClick={(e) => {
+              e.stopPropagation();
+              onToggleFavorite();
+            }}
+            className="p-2 rounded-full bg-gray-900/80 backdrop-blur-sm hover:bg-gray-800 transition-colors"
+          >
+            <HeartIcon 
+              className={`h-5 w-5 ${
+                isFavorite ? 'text-pink-500' : 'text-gray-400'
+              } transition-colors`} 
+            />
+          </motion.button>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+          <p className="text-white font-medium line-clamp-2">{movie.overview}</p>
+        </div>
+      </div>
+      <div className="p-4">
+        <h3 className="text-white font-medium text-lg truncate">{movie.title}</h3>
+        <div className="flex items-center text-sm text-gray-400 mt-2">
+          <span>{new Date(movie.release_date).getFullYear()}</span>
+          <span className="mx-2">•</span>
+          <div className="flex items-center">
+            <StarIcon className="h-4 w-4 text-yellow-400 mr-1" />
+            <span>{movie.vote_average.toFixed(1)}</span>
+          </div>
+        </div>
+
+        <motion.div
+          initial={false}
+          animate={{ height: isSelected ? 'auto' : 0, opacity: isSelected ? 1 : 0 }}
+          transition={{ duration: 0.3 }}
+          className={`overflow-hidden ${isSelected ? 'mt-4' : ''}`}
+        >
+          {isSelected && (
+            <div className="border-t border-gray-700 pt-4">
+              <p className="text-sm text-gray-300 leading-relaxed">
+                {movie.overview}
+              </p>
+              
+              {watchProviders?.US && (
+                <WatchProviders providers={watchProviders.US} />
+              )}
+              
+              <div className="mt-4 flex items-center justify-between">
+                <span className="text-sm text-gray-400">Perfect for {mood.toLowerCase()} moments</span>
+                <a 
+                  href={`https://www.themoviedb.org/movie/${movie.id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-sm text-blue-400 hover:text-blue-300 transition-colors"
 const MovieFinder: React.FC = () => {
   const { currentMood, favoriteMovies, toggleFavorite } = useMood();
   const [movies, setMovies] = useState<Movie[]>([]);
