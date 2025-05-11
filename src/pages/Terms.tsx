@@ -1,76 +1,91 @@
 import React from 'react';
+import AdSense from '../components/AdSense';
 
-const Terms: React.FC = () => {
+const Terms = () => {
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h1 className="text-3xl font-bold text-white mb-8">Terms of Service</h1>
-      
-      <div className="space-y-8 text-gray-300">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h1 className="text-4xl font-bold text-white mb-8">Terms of Service</h1>
+
+      <div className="bg-gray-800 rounded-lg p-8 space-y-8">
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">1. Acceptance of Terms</h2>
-          <p className="leading-relaxed">
-            By accessing and using Movie Mood, you accept and agree to be bound by the terms and provisions of this agreement. If you do not agree to these terms, please do not use our service.
+          <h2 className="text-2xl font-bold text-white mb-4">1. Acceptance of Terms</h2>
+          <p className="text-gray-300 leading-relaxed">
+            By accessing and using MovieMood, you accept and agree to be bound by the terms and
+            provision of this agreement.
+          </p>
+        </section>
+
+        <AdSense
+          slot="3579124680"
+          format="auto"
+          className="my-8"
+        />
+
+        <section>
+          <h2 className="text-2xl font-bold text-white mb-4">2. Description of Service</h2>
+          <p className="text-gray-300 leading-relaxed">
+            MovieMood provides a movie recommendation service based on user moods and preferences.
+            We utilize The Movie Database (TMDB) API to provide movie information and recommendations.
           </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">2. Description of Service</h2>
-          <p className="leading-relaxed">
-            Movie Mood is a mood-based movie recommendation platform that helps users discover films based on their emotional state and preferences. We provide personalized movie suggestions, mood analysis, and the ability to save favorites.
+          <h2 className="text-2xl font-bold text-white mb-4">3. User Conduct</h2>
+          <p className="text-gray-300 leading-relaxed mb-4">
+            You agree to use MovieMood only for lawful purposes and in a way that does not infringe
+            the rights of, restrict or inhibit anyone else's use and enjoyment of the website.
           </p>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">3. User Responsibilities</h2>
-          <p className="leading-relaxed mb-4">
-            Users of Movie Mood agree to:
-          </p>
-          <ul className="list-disc list-inside space-y-2 ml-4">
-            <li>Provide accurate information when using our services</li>
-            <li>Use the service in a manner consistent with all applicable laws</li>
-            <li>Maintain the confidentiality of their account information</li>
-            <li>Not misuse or abuse the service or its features</li>
+          <ul className="list-disc list-inside text-gray-300 space-y-2">
+            <li>Do not attempt to gain unauthorized access to our services</li>
+            <li>Do not use our service for any unlawful purposes</li>
+            <li>Do not transmit any harmful code or malware</li>
+            <li>Do not attempt to modify, adapt, or hack the service</li>
           </ul>
         </section>
 
+        <AdSense
+          slot="4680235791"
+          format="auto"
+          className="my-8"
+        />
+
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">4. Intellectual Property</h2>
-          <p className="leading-relaxed">
-            All content on Movie Mood, including but not limited to text, graphics, logos, and software, is the property of Movie Mood or its content suppliers and is protected by international copyright laws.
+          <h2 className="text-2xl font-bold text-white mb-4">4. Privacy Policy</h2>
+          <p className="text-gray-300 leading-relaxed">
+            Your use of MovieMood is also governed by our Privacy Policy. Please review our Privacy
+            Policy, which also governs the site and informs users of our data collection practices.
           </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">5. Privacy Policy</h2>
-          <p className="leading-relaxed">
-            Your use of Movie Mood is also governed by our Privacy Policy. Please review our Privacy Policy to understand our practices.
+          <h2 className="text-2xl font-bold text-white mb-4">5. Disclaimer</h2>
+          <p className="text-gray-300 leading-relaxed">
+            MovieMood is provided "as is" without any representations or warranties, express or implied.
+            We make no representations or warranties in relation to this website or the information and
+            materials provided on this website.
           </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">6. Limitation of Liability</h2>
-          <p className="leading-relaxed">
-            Movie Mood provides its service on an "as is" and "as available" basis. We do not guarantee that the service will be uninterrupted, timely, secure, or error-free.
+          <h2 className="text-2xl font-bold text-white mb-4">6. Changes to Terms</h2>
+          <p className="text-gray-300 leading-relaxed">
+            We reserve the right to modify these terms at any time. We do so by posting and drawing
+            attention to the updated terms on the site. Your decision to continue to visit and make
+            use of the site after such changes have been made constitutes your formal acceptance of
+            the new Terms of Service.
           </p>
         </section>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">7. Changes to Terms</h2>
-          <p className="leading-relaxed">
-            We reserve the right to modify these terms at any time. We will notify users of any material changes through our website or via email.
-          </p>
-        </section>
+        <AdSense
+          slot="5791346802"
+          format="auto"
+          className="my-8"
+        />
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">8. Contact Information</h2>
-          <p className="leading-relaxed">
-            For questions about these Terms of Service, please contact us at visonovaofficial@gmail.com
-          </p>
-        </section>
-
-        <section>
-          <p className="text-sm text-gray-400">
-            Last updated: {new Date().toLocaleDateString()}
+          <h2 className="text-2xl font-bold text-white mb-4">7. Contact Information</h2>
+          <p className="text-gray-300 leading-relaxed">
+            If you have any questions about these Terms, please contact us at support@moviemood.com
           </p>
         </section>
       </div>
