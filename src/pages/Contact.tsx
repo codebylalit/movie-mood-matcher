@@ -36,7 +36,7 @@ const Contact: React.FC = () => {
             <div className="space-y-4">
               <div>
                 <h3 className="text-white font-medium mb-1">Email</h3>
-                <p>contact@moviemood.com</p>
+                <p>visonovaofficial@gmail.com</p>
               </div>
               
               <div>

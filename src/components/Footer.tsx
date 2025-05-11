@@ -1,55 +1,132 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
-const Footer: React.FC = () => {
+const Footer = () => {
+  const footerLinks = [
+    {
+      title: 'Company',
+      links: [
+        { name: 'About Us', path: '/about' },
+        { name: 'Contact', path: '/contact' },
+        { name: 'Privacy Policy', path: '/privacy' },
+        { name: 'Terms of Service', path: '/terms' },
+      ],
+    },
+    {
+      title: 'Features',
+      links: [
+        { name: 'Movie Discovery', path: '/' },
+        { name: 'Mood-based Search', path: '/' },
+        { name: 'Watch Providers', path: '/' },
+        { name: 'My Favorites', path: '/favorites' },
+      ],
+    },
+    {
+      title: 'Connect',
+      links: [
+        { name: 'Twitter', path: 'https://twitter.com' },
+        { name: 'Facebook', path: 'https://facebook.com' },
+        { name: 'Instagram', path: 'https://instagram.com' },
+        { name: 'GitHub', path: 'https://github.com' },
+      ],
+    },
+  ];
+
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-gray-900 text-gray-400 py-8 mt-auto">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <h3 className="text-white font-semibold mb-4">Movie Mood</h3>
-            <p className="text-sm">
-              Discover movies that match your mood and enhance your viewing experience.
+    <footer className="bg-gray-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="col-span-2 md:col-span-1"
+          >
+            <Link to="/" className="inline-block">
+              <h2 className="text-2xl font-bold text-white mb-4">MovieMood</h2>
+            </Link>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Discover movies that match your mood. Your personalized movie companion for every emotion.
             </p>
-          </div>
-          
-          <div>
-            <h4 className="text-white font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2 text-sm">
-              <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
-              <li><Link to="/favorites" className="hover:text-white transition-colors">Favorites</Link></li>
-              <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
-              <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="text-white font-semibold mb-4">Legal</h4>
-            <ul className="space-y-2 text-sm">
-              <li><Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
-              <li><Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="text-white font-semibold mb-4">Follow Us</h4>
-            <div className="flex space-x-4">
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                Twitter
+          </motion.div>
+
+          {footerLinks.map((section, index) => (
+            <motion.div
+              key={section.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <h3 className="text-white font-medium mb-4">{section.title}</h3>
+              <ul className="space-y-2">
+                {section.links.map((link) => (
+                  <li key={link.name}>
+                    {link.path.startsWith('http') ? (
+                      <a
+                        href={link.path}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                      >
+                        {link.name}
+                      </a>
+                    ) : (
+                      <Link
+                        to={link.path}
+                        className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                      >
+                        {link.name}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-12 pt-8 border-t border-gray-800"
+        >
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-gray-400 text-sm">
+              © {currentYear} MovieMood. All rights reserved.
+            </p>
+            <div className="flex items-center space-x-4 mt-4 md:mt-0">
+              <a
+                href="https://www.themoviedb.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+              >
+                Powered by TMDB
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                Facebook
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                Instagram
-              </a>
+              <span className="text-gray-600">|</span>
+              <Link
+                to="/privacy"
+                className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+              >
+                Privacy
+              </Link>
+              <span className="text-gray-600">|</span>
+              <Link
+                to="/terms"
+                className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+              >
+                Terms
+              </Link>
             </div>
           </div>
-        </div>
-        
-        <div className="mt-8 pt-8 border-t border-gray-800 text-sm text-center">
-          <p>&copy; {new Date().getFullYear()} Movie Mood. All rights reserved.</p>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

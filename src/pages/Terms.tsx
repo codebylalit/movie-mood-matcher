@@ -64,7 +64,7 @@ const Terms: React.FC = () => {
         <section>
           <h2 className="text-2xl font-semibold text-white mb-4">8. Contact Information</h2>
           <p className="leading-relaxed">
-            For questions about these Terms of Service, please contact us at legal@moviemood.com.
+            For questions about these Terms of Service, please contact us at visonovaofficial@gmail.com
           </p>
         </section>
 

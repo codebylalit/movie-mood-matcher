@@ -56,7 +56,7 @@ const Privacy: React.FC = () => {
         <section>
           <h2 className="text-2xl font-semibold text-white mb-4">Contact Us</h2>
           <p className="leading-relaxed">
-            If you have any questions about our Privacy Policy, please contact us through our Contact page or email us at privacy@moviemood.com.
+            If you have any questions about our Privacy Policy, please contact us through our Contact page or email us at visonovaofficial@gmail.com
           </p>
         </section>
 
