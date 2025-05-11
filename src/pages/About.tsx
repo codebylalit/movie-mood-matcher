@@ -1,44 +1,81 @@
 import React from 'react';
+import AdSense from '../components/AdSense';
 
-const About: React.FC = () => {
+const About = () => {
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h1 className="text-3xl font-bold text-white mb-8">About Movie Mood</h1>
-      
-      <div className="space-y-8 text-gray-300">
-        <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">Our Mission</h2>
-          <p className="leading-relaxed">
-            Movie Mood was created with a simple yet powerful idea: to help people find the perfect movie that matches their current emotional state. We believe that movies have the unique ability to resonate with our feelings, whether we're seeking comfort, inspiration, or pure entertainment.
-          </p>
-        </section>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h1 className="text-4xl font-bold text-white mb-8">About MovieMood</h1>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">How It Works</h2>
-          <p className="leading-relaxed mb-4">
-            Our innovative mood-matching algorithm considers various factors to recommend movies that align with your current emotional state:
+      <div className="grid gap-8">
+        <div className="bg-gray-800 rounded-lg p-8">
+          <h2 className="text-2xl font-bold text-white mb-4">Our Mission</h2>
+          <p className="text-gray-300 leading-relaxed">
+            At MovieMood, we believe that every emotion deserves its perfect movie match. Our mission
+            is to help you discover films that resonate with your current mood, making your movie
+            watching experience more personal and meaningful.
           </p>
-          <ul className="list-disc list-inside space-y-2 ml-4">
-            <li>Emotional resonance and thematic elements</li>
-            <li>Pacing and narrative style</li>
-            <li>Visual and musical atmosphere</li>
-            <li>User feedback and ratings</li>
-          </ul>
-        </section>
+        </div>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">Our Team</h2>
-          <p className="leading-relaxed">
-            Movie Mood is maintained by a passionate team of film enthusiasts, data scientists, and developers who believe in the power of cinema to transform moods and create meaningful experiences. We continuously update our movie database and refine our recommendation system to provide you with the best possible matches.
-          </p>
-        </section>
+        <AdSense
+          slot="6802457913"
+          format="auto"
+          className="my-8"
+        />
 
-        <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">Join Our Community</h2>
-          <p className="leading-relaxed">
-            We invite you to be part of our growing community of movie lovers. Share your experiences, discover new films, and help others find their perfect mood match. Follow us on social media to stay updated with the latest features and movie recommendations.
+        <div className="bg-gray-800 rounded-lg p-8">
+          <h2 className="text-2xl font-bold text-white mb-4">How It Works</h2>
+          <div className="space-y-4 text-gray-300">
+            <p className="leading-relaxed">
+              Our innovative mood-based recommendation system analyzes various aspects of films,
+              including genre, tone, themes, and viewer reactions, to suggest movies that match
+              your emotional state.
+            </p>
+            <ul className="list-disc list-inside space-y-2">
+              <li>Select your current mood</li>
+              <li>Choose your preferred genres</li>
+              <li>Filter by release year or streaming service</li>
+              <li>Get personalized movie recommendations</li>
+            </ul>
+          </div>
+        </div>
+
+        <AdSense
+          slot="7913568024"
+          format="auto"
+          className="my-8"
+        />
+
+        <div className="bg-gray-800 rounded-lg p-8">
+          <h2 className="text-2xl font-bold text-white mb-4">Our Technology</h2>
+          <p className="text-gray-300 leading-relaxed">
+            We leverage the powerful TMDB API to provide you with accurate and up-to-date movie
+            information. Our platform combines this data with sophisticated mood mapping algorithms
+            to deliver precise recommendations tailored to your emotional state.
           </p>
-        </section>
+        </div>
+
+        <div className="bg-gray-800 rounded-lg p-8">
+          <h2 className="text-2xl font-bold text-white mb-4">The Team</h2>
+          <p className="text-gray-300 leading-relaxed">
+            MovieMood is created by a passionate team of movie enthusiasts and technology experts.
+            We're dedicated to continuously improving our platform to provide you with the best
+            possible movie discovery experience.
+          </p>
+        </div>
+
+        <AdSense
+          slot="8024679135"
+          format="auto"
+          className="my-8"
+        />
+
+        <div className="bg-gray-800 rounded-lg p-8">
+          <h2 className="text-2xl font-bold text-white mb-4">Get in Touch</h2>
+          <p className="text-gray-300 leading-relaxed">
+            We love hearing from our users! If you have any questions, suggestions, or just want
+            to say hello, don't hesitate to contact us at support@moviemood.com
+          </p>
+        </div>
       </div>
     </div>
   );

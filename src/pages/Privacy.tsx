@@ -1,70 +1,123 @@
 import React from 'react';
+import AdSense from '../components/AdSense';
 
-const Privacy: React.FC = () => {
+const Privacy = () => {
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h1 className="text-3xl font-bold text-white mb-8">Privacy Policy</h1>
-      
-      <div className="space-y-8 text-gray-300">
-        <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">Information We Collect</h2>
-          <p className="leading-relaxed mb-4">
-            We collect information that you provide directly to us, including:
-          </p>
-          <ul className="list-disc list-inside space-y-2 ml-4">
-            <li>Movie preferences and ratings</li>
-            <li>Mood selections and quiz responses</li>
-            <li>Favorite movies and watchlist items</li>
-            <li>Account information (if you choose to create an account)</li>
-          </ul>
-        </section>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h1 className="text-4xl font-bold text-white mb-8">Privacy Policy</h1>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">How We Use Your Information</h2>
-          <p className="leading-relaxed mb-4">
-            We use the information we collect to:
+      <div className="space-y-8">
+        <div className="bg-gray-800 rounded-lg p-8">
+          <h2 className="text-2xl font-bold text-white mb-4">Introduction</h2>
+          <p className="text-gray-300 leading-relaxed">
+            Your privacy is important to us. This Privacy Policy explains how MovieMood collects,
+            uses, and protects your personal information when you use our website and services.
           </p>
-          <ul className="list-disc list-inside space-y-2 ml-4">
-            <li>Provide personalized movie recommendations</li>
-            <li>Improve our mood-matching algorithm</li>
-            <li>Analyze user preferences and trends</li>
-            <li>Communicate with you about updates and features</li>
-          </ul>
-        </section>
+        </div>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">Data Security</h2>
-          <p className="leading-relaxed">
-            We implement appropriate security measures to protect your personal information. However, no method of transmission over the Internet is 100% secure. We strive to protect your data but cannot guarantee its absolute security.
-          </p>
-        </section>
+        <AdSense
+          slot="9135780246"
+          format="auto"
+          className="my-8"
+        />
 
-        <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">Cookies and Tracking</h2>
-          <p className="leading-relaxed">
-            We use cookies and similar tracking technologies to enhance your experience on our website. You can control cookie settings through your browser preferences.
-          </p>
-        </section>
+        <div className="bg-gray-800 rounded-lg p-8">
+          <h2 className="text-2xl font-bold text-white mb-4">Information We Collect</h2>
+          <div className="space-y-4">
+            <p className="text-gray-300 leading-relaxed">
+              We collect information that you provide directly to us, including:
+            </p>
+            <ul className="list-disc list-inside text-gray-300 space-y-2">
+              <li>Email address (when you subscribe or contact us)</li>
+              <li>Movie preferences and favorites</li>
+              <li>Mood selections and viewing history</li>
+              <li>Feedback and correspondence</li>
+            </ul>
+          </div>
+        </div>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">Third-Party Services</h2>
-          <p className="leading-relaxed">
-            We may use third-party services for analytics, advertising, and other purposes. These services may collect information about your use of our website.
-          </p>
-        </section>
+        <AdSense
+          slot="0246891357"
+          format="auto"
+          className="my-8"
+        />
 
-        <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">Contact Us</h2>
-          <p className="leading-relaxed">
-            If you have any questions about our Privacy Policy, please contact us through our Contact page or email us at visonovaofficial@gmail.com
-          </p>
-        </section>
+        <div className="bg-gray-800 rounded-lg p-8">
+          <h2 className="text-2xl font-bold text-white mb-4">How We Use Your Information</h2>
+          <div className="space-y-4">
+            <p className="text-gray-300 leading-relaxed">
+              We use the information we collect to:
+            </p>
+            <ul className="list-disc list-inside text-gray-300 space-y-2">
+              <li>Provide and improve our movie recommendation service</li>
+              <li>Personalize your movie discovery experience</li>
+              <li>Communicate with you about our services</li>
+              <li>Analyze and improve our website performance</li>
+            </ul>
+          </div>
+        </div>
 
-        <section>
-          <p className="text-sm text-gray-400">
-            Last updated: {new Date().toLocaleDateString()}
+        <div className="bg-gray-800 rounded-lg p-8">
+          <h2 className="text-2xl font-bold text-white mb-4">Cookies and Tracking</h2>
+          <p className="text-gray-300 leading-relaxed">
+            We use cookies and similar tracking technologies to track activity on our website and
+            hold certain information. Cookies are files with small amounts of data which may include
+            an anonymous unique identifier.
           </p>
-        </section>
+        </div>
+
+        <AdSense
+          slot="1357902468"
+          format="auto"
+          className="my-8"
+        />
+
+        <div className="bg-gray-800 rounded-lg p-8">
+          <h2 className="text-2xl font-bold text-white mb-4">Data Security</h2>
+          <p className="text-gray-300 leading-relaxed">
+            We implement appropriate security measures to protect your personal information.
+            However, please note that no method of transmission over the Internet or electronic
+            storage is 100% secure.
+          </p>
+        </div>
+
+        <div className="bg-gray-800 rounded-lg p-8">
+          <h2 className="text-2xl font-bold text-white mb-4">Third-Party Services</h2>
+          <p className="text-gray-300 leading-relaxed">
+            We use The Movie Database (TMDB) API and other third-party services to provide movie
+            information. These services may collect information about you independently. We
+            recommend reviewing their privacy policies.
+          </p>
+        </div>
+
+        <AdSense
+          slot="2468013579"
+          format="auto"
+          className="my-8"
+        />
+
+        <div className="bg-gray-800 rounded-lg p-8">
+          <h2 className="text-2xl font-bold text-white mb-4">Your Rights</h2>
+          <div className="space-y-4">
+            <p className="text-gray-300 leading-relaxed">
+              You have the right to:
+            </p>
+            <ul className="list-disc list-inside text-gray-300 space-y-2">
+              <li>Access your personal information</li>
+              <li>Correct inaccurate information</li>
+              <li>Request deletion of your information</li>
+              <li>Opt-out of marketing communications</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="bg-gray-800 rounded-lg p-8">
+          <h2 className="text-2xl font-bold text-white mb-4">Contact Us</h2>
+          <p className="text-gray-300 leading-relaxed">
+            If you have any questions about this Privacy Policy, please contact us at
+            privacy@moviemood.com
+          </p>
+        </div>
       </div>
     </div>
   );
