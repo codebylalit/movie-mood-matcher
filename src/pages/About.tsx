@@ -1,84 +1,52 @@
-import React from 'react';
-import AdSense from '../components/AdSense';
+import React from "react";
 
-const About = () => {
-  return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h1 className="text-4xl font-bold text-white mb-8">About MovieMood</h1>
-
-      <div className="grid gap-8">
-        <div className="bg-gray-800 rounded-lg p-8">
-          <h2 className="text-2xl font-bold text-white mb-4">Our Mission</h2>
-          <p className="text-gray-300 leading-relaxed">
-            At MovieMood, we believe that every emotion deserves its perfect movie match. Our mission
-            is to help you discover films that resonate with your current mood, making your movie
-            watching experience more personal and meaningful.
-          </p>
-        </div>
-
-        <AdSense
-          slot="6802457913"
-          format="auto"
-          className="my-8"
-        />
-
-        <div className="bg-gray-800 rounded-lg p-8">
-          <h2 className="text-2xl font-bold text-white mb-4">How It Works</h2>
-          <div className="space-y-4 text-gray-300">
-            <p className="leading-relaxed">
-              Our innovative mood-based recommendation system analyzes various aspects of films,
-              including genre, tone, themes, and viewer reactions, to suggest movies that match
-              your emotional state.
-            </p>
-            <ul className="list-disc list-inside space-y-2">
-              <li>Select your current mood</li>
-              <li>Choose your preferred genres</li>
-              <li>Filter by release year or streaming service</li>
-              <li>Get personalized movie recommendations</li>
-            </ul>
-          </div>
-        </div>
-
-        <AdSense
-          slot="7913568024"
-          format="auto"
-          className="my-8"
-        />
-
-        <div className="bg-gray-800 rounded-lg p-8">
-          <h2 className="text-2xl font-bold text-white mb-4">Our Technology</h2>
-          <p className="text-gray-300 leading-relaxed">
-            We leverage the powerful TMDB API to provide you with accurate and up-to-date movie
-            information. Our platform combines this data with sophisticated mood mapping algorithms
-            to deliver precise recommendations tailored to your emotional state.
-          </p>
-        </div>
-
-        <div className="bg-gray-800 rounded-lg p-8">
-          <h2 className="text-2xl font-bold text-white mb-4">The Team</h2>
-          <p className="text-gray-300 leading-relaxed">
-            MovieMood is created by a passionate team of movie enthusiasts and technology experts.
-            We're dedicated to continuously improving our platform to provide you with the best
-            possible movie discovery experience.
-          </p>
-        </div>
-
-        <AdSense
-          slot="8024679135"
-          format="auto"
-          className="my-8"
-        />
-
-        <div className="bg-gray-800 rounded-lg p-8">
-          <h2 className="text-2xl font-bold text-white mb-4">Get in Touch</h2>
-          <p className="text-gray-300 leading-relaxed">
-            We love hearing from our users! If you have any questions, suggestions, or just want
-            to say hello, don't hesitate to contact us at support@moviemood.com
-          </p>
-        </div>
+const About: React.FC = () => (
+  <div className="max-w-2xl mx-auto py-16 px-4">
+    <h1 className="text-3xl font-bold text-darkslate mb-6">About Us</h1>
+    <div className="space-y-6 text-darkslate/90 text-base">
+      <p>
+        Welcome to <b>Shortify</b>! Our mission is to make sharing and
+        discovering content easier, faster, and more delightful. Whether you're
+        shortening links or exploring new ideas, we're here to help you connect
+        and create.
+      </p>
+      <div>
+        <h2 className="font-bold text-lg mb-2">Our Mission</h2>
+        <p>
+          We believe in the power of simplicity and accessibility. Shortify is
+          designed to provide a seamless, privacy-focused experience for
+          everyone—from casual users to professionals.
+        </p>
+      </div>
+      <div>
+        <h2 className="font-bold text-lg mb-2">Our Team</h2>
+        <p>
+          Shortify was built by a passionate team of creators and developers who
+          value transparency, user privacy, and innovation. We are committed to
+          continuous improvement and listening to our users.
+        </p>
+      </div>
+      <div>
+        <h2 className="font-bold text-lg mb-2">Our Values</h2>
+        <ul className="list-disc ml-6">
+          <li>Privacy-first: Your data stays with you.</li>
+          <li>Speed and simplicity: Shorten and share links in seconds.</li>
+          <li>Accessibility: Easy to use for everyone.</li>
+        </ul>
+      </div>
+      <div>
+        <h2 className="font-bold text-lg mb-2">Contact Us</h2>
+        <p>
+          Thank you for being part of our journey. If you have feedback or want
+          to get in touch, please visit our{" "}
+          <a href="/contact" className="text-mustard hover:underline">
+            Contact
+          </a>{" "}
+          page.
+        </p>
       </div>
     </div>
-  );
-};
+  </div>
+);
 
-export default About; 
+export default About;

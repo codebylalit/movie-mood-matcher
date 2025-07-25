@@ -1,97 +1,97 @@
-import React from 'react';
-import AdSense from '../components/AdSense';
+import React, { useState } from "react";
+import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
+import Footer from "../components/Footer";
 
-const Contact = () => {
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/manbeezw";
+
+const Contact: React.FC = () => {
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h1 className="text-4xl font-bold text-white mb-8">Contact Us</h1>
-      
-      <div className="bg-gray-800 rounded-lg p-8 mb-8">
-        <p className="text-gray-300 mb-6">
-          We'd love to hear from you! Whether you have a question about features, pricing,
-          or anything else, our team is ready to answer all your questions.
-        </p>
-
-        <form className="space-y-6">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+    <div className="max-w-xl mx-auto px-4 py-16 font-sans flex flex-col items-center justify-center">
+      <h1 className="text-3xl font-extrabold text-darkslate mb-6 font-sans text-center">
+        Contact Us
+      </h1>
+      <p className="mb-8 text-darkslate/80 text-center">
+        Have a question, suggestion, or just want to say hi? Fill out the form
+        below and we'll get back to you soon!
+      </p>
+      {submitted ? (
+        <div className="bg-mustard/20 border border-mustard text-darkslate rounded-lg p-6 text-center font-semibold">
+          Thank you for reaching out! We'll be in touch soon.
+        </div>
+      ) : (
+        <form
+          className="space-y-6 bg-white/80 rounded-xl shadow p-6 border border-darkslate/10 w-full flex flex-col items-center"
+          action={FORMSPREE_ENDPOINT}
+          method="POST"
+          target="_blank"
+          onSubmit={() => {
+            setLoading(true);
+            setTimeout(() => setSubmitted(true), 1200);
+          }}
+        >
+          <div className="w-full">
+            <label
+              htmlFor="name"
+              className="block font-semibold mb-1 text-darkslate"
+            >
               Name
             </label>
             <input
               type="text"
               id="name"
               name="name"
-              className="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 text-white
-                       focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required
+              className="w-full rounded-lg border-2 border-darkslate/20 px-3 py-2 focus:outline-none focus:border-mustard bg-vanilla text-darkslate placeholder:text-darkslate/40 shadow"
               placeholder="Your name"
             />
           </div>
-
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+          <div className="w-full">
+            <label
+              htmlFor="email"
+              className="block font-semibold mb-1 text-darkslate"
+            >
               Email
             </label>
             <input
               type="email"
               id="email"
               name="email"
-              className="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 text-white
-                       focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              placeholder="your@email.com"
+              required
+              className="w-full rounded-lg border-2 border-darkslate/20 px-3 py-2 focus:outline-none focus:border-mustard bg-vanilla text-darkslate placeholder:text-darkslate/40 shadow"
+              placeholder="you@email.com"
             />
           </div>
-
-          <div>
-            <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+          <div className="w-full">
+            <label
+              htmlFor="message"
+              className="block font-semibold mb-1 text-darkslate"
+            >
               Message
             </label>
             <textarea
               id="message"
               name="message"
-              rows={4}
-              className="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 text-white
-                       focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              placeholder="Your message..."
+              required
+              rows={5}
+              className="w-full rounded-lg border-2 border-darkslate/20 px-3 py-2 focus:outline-none focus:border-mustard bg-vanilla text-darkslate placeholder:text-darkslate/40 shadow"
+              placeholder="How can we help you?"
             />
           </div>
-
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700
-                     transition-colors duration-200 font-medium"
+            className="btn btn-primary flex items-center gap-2 px-6 py-2 rounded-full font-bold text-lg shadow hover:scale-105 disabled:opacity-60 mx-auto"
+            disabled={loading}
           >
-            Send Message
+            <PaperAirplaneIcon className="w-5 h-5" />
+            {loading ? "Sending..." : "Send Message"}
           </button>
         </form>
-      </div>
-
-      <AdSense
-        slot="2468013579"
-        format="auto"
-        className="my-8"
-      />
-
-      <div className="bg-gray-800 rounded-lg p-8">
-        <h2 className="text-2xl font-bold text-white mb-4">Other Ways to Reach Us</h2>
-        
-        <div className="grid md:grid-cols-2 gap-6">
-          <div>
-            <h3 className="text-lg font-medium text-white mb-2">Email</h3>
-            <p className="text-gray-300">support@moviemood.com</p>
-          </div>
-          
-          <div>
-            <h3 className="text-lg font-medium text-white mb-2">Social Media</h3>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">Twitter</a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">Facebook</a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">Instagram</a>
-            </div>
-          </div>
-        </div>
-      </div>
+      )}
     </div>
   );
 };
 
-export default Contact; 
+export default Contact;

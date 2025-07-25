@@ -1,10 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   body {
-    @apply bg-gray-900 text-white;
+    @apply bg-vanilla text-darkslate;
+    font-family: 'Poppins', sans-serif;
   }
 }
 
@@ -21,14 +24,15 @@
 
 @layer components {
   .btn {
-    @apply px-4 py-2 rounded-lg font-medium transition-colors duration-200;
+    @apply px-4 py-2 rounded-lg font-bold shadow transition-transform duration-150 active:scale-95;
   }
-  
   .btn-primary {
-    @apply bg-blue-600 text-white hover:bg-blue-700;
+    @apply bg-mustard text-darkslate hover:bg-redbrick hover:text-vanilla;
   }
-  
   .btn-secondary {
-    @apply bg-gray-800 text-white hover:bg-gray-700;
+    @apply bg-darkslate text-vanilla hover:bg-mustard hover:text-darkslate;
+  }
+  .card {
+    @apply bg-white bg-opacity-80 rounded-xl shadow p-4 border border-darkslate/10;
   }
 } 
