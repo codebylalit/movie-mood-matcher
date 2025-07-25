@@ -12,7 +12,7 @@ import MyLinks from "./pages/MyLinks";
 
 const App: React.FC = () => (
   <Router>
-    <div className="flex flex-col bg-gradient-to-b from-vanilla via-mustard/15 p-3 sm:p-6 min-h-screen">
+    <div className="flex flex-col bg-gradient-to-b from-vanilla via-mustard/15 p-4 sm:p-8 min-h-screen">
       <Navbar />
       <div className="flex-1">
         <Routes>
