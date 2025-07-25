@@ -8,6 +8,7 @@ import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
 import About from "./pages/About";
 import BuyMeACoffee from "./pages/BuyMeACoffee";
+import MyLinks from "./pages/MyLinks";
 
 const App: React.FC = () => (
   <Router>
@@ -16,6 +17,7 @@ const App: React.FC = () => (
       <div className="flex-1">
         <Routes>
           <Route path="/" element={<Shortify />} />
+          <Route path="/my-links" element={<MyLinks />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/contact" element={<Contact />} />

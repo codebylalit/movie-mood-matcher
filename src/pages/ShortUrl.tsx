@@ -159,7 +159,7 @@ const Shortify: React.FC = () => {
             </div>
           )}
         </form>
-        <div className="w-full max-w-xl flex flex-col xs:flex-row items-center gap-2 text-darkslate/70 text-base mb-4">
+        <div className="w-full max-w-xl flex items-center gap-2 text-darkslate/70 text-base mb-4">
           <span className="font-bold">Total URLs shortened:</span>{" "}
           <span className="bg-mustard px-2 py-1 rounded text-darkslate font-mono">
             {urls.length}
@@ -172,62 +172,62 @@ const Shortify: React.FC = () => {
               No URLs shortened yet. Try it out!
             </div>
           )}
-          {urls.map((u) => (
+          {urls.length > 0 && (
             <div
-              key={u.id}
+              key={urls[0].id}
               className="card flex flex-col md:flex-row md:items-center gap-4 justify-between border-2 border-darkslate/10 shadow-lg hover:shadow-2xl transition-shadow bg-white/95 hover:bg-mustard/10 group ring-0 hover:ring-2 hover:ring-mustard/60 duration-200 p-3 md:p-4"
             >
               <div className="flex-1 min-w-0">
                 <div className="text-darkslate font-semibold break-all text-base sm:text-lg mb-1">
-                  {u.longUrl}
+                  {urls[0].longUrl}
                 </div>
                 <div className="flex flex-wrap items-center gap-2 mt-1">
                   <a
-                    href={u.shortUrl}
+                    href={urls[0].shortUrl}
                     className="text-mustard underline hover:text-redbrick transition text-base sm:text-lg break-all"
                     onClick={(e) => {
                       e.preventDefault();
-                      handleVisit(u.id, u.longUrl);
+                      handleVisit(urls[0].id, urls[0].longUrl);
                     }}
                     tabIndex={0}
                     title="Open original URL"
                   >
-                    {u.shortUrl}
+                    {urls[0].shortUrl}
                   </a>
                   <button
                     className="btn btn-secondary px-2 py-1 text-xs sm:text-sm hover:bg-mustard hover:text-darkslate transition"
-                    onClick={() => handleCopy(u.shortUrl, u.id)}
+                    onClick={() => handleCopy(urls[0].shortUrl, urls[0].id)}
                     title="Copy short URL"
                   >
-                    {copiedId === u.id ? "Copied!" : "Copy"}
+                    {copiedId === urls[0].id ? "Copied!" : "Copy"}
                   </button>
                   <span className="ml-2 text-xs text-darkslate/60">
-                    Clicks: {u.clicks}
+                    Clicks: {urls[0].clicks}
                   </span>
                 </div>
               </div>
               <div className="flex flex-row md:flex-col items-center gap-2 md:ml-4 justify-center">
                 <QRCodeCanvas
-                  value={u.shortUrl}
+                  value={urls[0].shortUrl}
                   size={56}
                   bgColor="#FFF3B0"
                   fgColor="#335C67"
                   level="H"
                   includeMargin={true}
                   ref={(el: HTMLCanvasElement | null) =>
-                    (qrRefs.current[u.id] = el)
+                    (qrRefs.current[urls[0].id] = el)
                   }
                 />
                 <button
                   className="btn btn-primary px-2 py-1 text-xs mt-1 hover:bg-redbrick hover:text-vanilla transition w-full md:w-auto"
-                  onClick={() => handleDownloadQR(u.id)}
+                  onClick={() => handleDownloadQR(urls[0].id)}
                   title="Download QR code as PNG"
                 >
                   ⬇️ Download QR
                 </button>
               </div>
             </div>
-          ))}
+          )}
         </div>
       </main>
     </div>
