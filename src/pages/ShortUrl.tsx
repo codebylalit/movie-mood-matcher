@@ -116,7 +116,7 @@ const Shortify: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-b from-vanilla via-mustard/15 flex flex-col ">
+    <div className="min-h-screen w-full  flex flex-col ">
       {/* Main content */}
       <main className="flex-1 flex flex-col items-center justify-center px-2 sm:px-4 py-6 sm:py-10">
         <form
