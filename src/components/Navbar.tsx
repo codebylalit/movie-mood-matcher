@@ -6,7 +6,7 @@ import {
   ShieldCheckIcon,
   DocumentTextIcon,
 } from "@heroicons/react/24/solid";
-import { MenuIcon, XIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const navLinks = [
   { name: "Home", to: "/" },
@@ -37,9 +37,9 @@ const Navbar: React.FC = () => {
           aria-label={menuOpen ? "Close menu" : "Open menu"}
         >
           {menuOpen ? (
-            <XIcon className="w-7 h-7 text-darkslate" />
+            <XMarkIcon className="w-7 h-7 text-darkslate" />
           ) : (
-            <MenuIcon className="w-7 h-7 text-darkslate" />
+            <Bars3Icon className="w-7 h-7 text-darkslate" />
           )}
         </button>
         {/* Nav links - desktop */}
@@ -83,7 +83,7 @@ const Navbar: React.FC = () => {
               onClick={() => setMenuOpen(false)}
               aria-label="Close menu"
             >
-              <XIcon className="w-7 h-7 text-darkslate" />
+              <XMarkIcon className="w-7 h-7 text-darkslate" />
             </button>
             <ul className="flex flex-col gap-4">
               {navLinks.map((link) => (

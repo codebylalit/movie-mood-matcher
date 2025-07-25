@@ -127,7 +127,7 @@ const Shortify: React.FC = () => {
             <input
               id="url"
               type="text"
-              className="flex-1 rounded-l-full sm:rounded-full border-2 border-darkslate/20 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-mustard focus:border-mustard bg-vanilla text-darkslate placeholder:text-darkslate/40 shadow text-base sm:text-lg font-mono transition-all"
+              className="flex-1 rounded-t-full sm:rounded-l-full sm:rounded-r-none rounded-b-none sm:rounded-full border-2 border-darkslate/20 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-mustard focus:border-mustard bg-vanilla text-darkslate placeholder:text-darkslate/40 shadow text-base sm:text-lg font-mono transition-all min-w-0"
               placeholder="https://example.com/very/long/url"
               value={input}
               onChange={(e) => setInput(e.target.value)}
@@ -136,7 +136,7 @@ const Shortify: React.FC = () => {
             />
             <button
               type="submit"
-              className="btn btn-primary min-w-[120px] flex items-center justify-center shadow hover:scale-105 text-base sm:text-lg rounded-r-full sm:rounded-full font-bold transition-all"
+              className="btn btn-primary min-w-[120px] flex items-center justify-center shadow hover:scale-105 text-base sm:text-lg rounded-b-full sm:rounded-r-full sm:rounded-l-none rounded-t-none font-bold transition-all"
               disabled={loading}
               title="Shorten URL"
             >
@@ -159,7 +159,7 @@ const Shortify: React.FC = () => {
             </div>
           )}
         </form>
-        <div className="w-full max-w-xl flex items-center gap-2 text-darkslate/70 text-base mb-4">
+        <div className="w-full max-w-xl flex flex-col xs:flex-row items-center gap-2 text-darkslate/70 text-base mb-4">
           <span className="font-bold">Total URLs shortened:</span>{" "}
           <span className="bg-mustard px-2 py-1 rounded text-darkslate font-mono">
             {urls.length}
@@ -175,16 +175,16 @@ const Shortify: React.FC = () => {
           {urls.map((u) => (
             <div
               key={u.id}
-              className="card flex flex-col md:flex-row md:items-center gap-4 justify-between border-2 border-darkslate/10 shadow-lg hover:shadow-2xl transition-shadow bg-white/95 hover:bg-mustard/10 group ring-0 hover:ring-2 hover:ring-mustard/60 duration-200"
+              className="card flex flex-col md:flex-row md:items-center gap-4 justify-between border-2 border-darkslate/10 shadow-lg hover:shadow-2xl transition-shadow bg-white/95 hover:bg-mustard/10 group ring-0 hover:ring-2 hover:ring-mustard/60 duration-200 p-3 md:p-4"
             >
               <div className="flex-1 min-w-0">
-                <div className="text-darkslate font-semibold truncate text-base sm:text-lg mb-1">
+                <div className="text-darkslate font-semibold break-all text-base sm:text-lg mb-1">
                   {u.longUrl}
                 </div>
                 <div className="flex flex-wrap items-center gap-2 mt-1">
                   <a
                     href={u.shortUrl}
-                    className="text-mustard underline hover:text-redbrick transition text-base sm:text-lg"
+                    className="text-mustard underline hover:text-redbrick transition text-base sm:text-lg break-all"
                     onClick={(e) => {
                       e.preventDefault();
                       handleVisit(u.id, u.longUrl);
@@ -206,7 +206,7 @@ const Shortify: React.FC = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-row md:flex-col items-center gap-2 md:ml-4">
+              <div className="flex flex-row md:flex-col items-center gap-2 md:ml-4 justify-center">
                 <QRCodeCanvas
                   value={u.shortUrl}
                   size={56}
@@ -219,7 +219,7 @@ const Shortify: React.FC = () => {
                   }
                 />
                 <button
-                  className="btn btn-primary px-2 py-1 text-xs mt-1 hover:bg-redbrick hover:text-vanilla transition"
+                  className="btn btn-primary px-2 py-1 text-xs mt-1 hover:bg-redbrick hover:text-vanilla transition w-full md:w-auto"
                   onClick={() => handleDownloadQR(u.id)}
                   title="Download QR code as PNG"
                 >
