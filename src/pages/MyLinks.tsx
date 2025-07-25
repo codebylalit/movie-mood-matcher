@@ -113,9 +113,9 @@ const MyLinks: React.FC = () => {
                   >
                     {copiedId === u.id ? "Copied!" : "Copy"}
                   </button>
-                  <span className="ml-2 text-xs text-darkslate/60">
+                  {/* <span className="ml-2 text-xs text-darkslate/60">
                     Clicks: {u.clicks}
-                  </span>
+                  </span> */}
                 </div>
               </div>
               <div className="flex flex-row md:flex-col items-center gap-2 md:ml-4 justify-center">

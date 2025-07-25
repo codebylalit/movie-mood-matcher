@@ -207,9 +207,6 @@ const Shortify: React.FC = () => {
                   >
                     {copiedId === urls[0].id ? "Copied!" : "Copy"}
                   </button>
-                  <span className="ml-2 text-xs text-darkslate/60">
-                    Clicks: {urls[0].clicks}
-                  </span>
                 </div>
               </div>
               <div className="flex flex-row md:flex-col items-center gap-2 md:ml-4 justify-center">
