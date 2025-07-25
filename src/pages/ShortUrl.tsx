@@ -127,7 +127,7 @@ const Shortify: React.FC = () => {
             <input
               id="url"
               type="text"
-              className="flex-1 rounded-t-full sm:rounded-l-full sm:rounded-r-none rounded-b-none sm:rounded-full border-2 border-darkslate/20 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-mustard focus:border-mustard bg-vanilla text-darkslate placeholder:text-darkslate/40 shadow text-base sm:text-lg font-mono transition-all min-w-0"
+              className="flex-1 rounded-full border-2 border-darkslate/20 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-mustard focus:border-mustard bg-vanilla text-darkslate placeholder:text-darkslate/40 shadow text-base sm:text-lg font-mono transition-all min-w-0"
               placeholder="https://example.com/very/long/url"
               value={input}
               onChange={(e) => setInput(e.target.value)}
@@ -136,7 +136,7 @@ const Shortify: React.FC = () => {
             />
             <button
               type="submit"
-              className="btn btn-primary min-w-[120px] flex items-center justify-center shadow hover:scale-105 text-base sm:text-lg rounded-b-full sm:rounded-r-full sm:rounded-l-none rounded-t-none font-bold transition-all"
+              className="btn btn-primary min-w-[120px] flex items-center justify-center shadow hover:scale-105 text-base sm:text-lg rounded-full font-bold transition-all"
               disabled={loading}
               title="Shorten URL"
             >
