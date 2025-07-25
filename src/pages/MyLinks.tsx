@@ -75,7 +75,7 @@ const MyLinks: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-vanilla flex flex-col">
+    <div className="min-h-screen w-full flex flex-col">
       <main className="flex-1 flex flex-col items-center justify-center px-2 sm:px-4 py-6 sm:py-10">
         <h1 className="text-2xl font-bold text-darkslate mb-6">My Links</h1>
         <div className="w-full max-w-2xl space-y-6">
