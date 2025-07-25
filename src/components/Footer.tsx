@@ -9,7 +9,7 @@ const Footer: React.FC = () => (
       <div className="flex items-center gap-2 whitespace-nowrap">
         <span>Built with</span>
         <HeartIcon className="w-5 h-5 text-mustard" aria-label="love" />
-        <span>for creators</span>
+        <span>by Shortify Team</span>
       </div>
 
       {/* Center: Policy Links */}

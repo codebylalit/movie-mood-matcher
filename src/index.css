@@ -5,6 +5,9 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    font-size: 15px; /* Slightly smaller than default (16px) */
+  }
   body {
     @apply bg-vanilla text-darkslate;
     font-family: 'Poppins', sans-serif;
@@ -22,9 +25,23 @@
   scrollbar-width: none;  /* Firefox */
 }
 
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0.5;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.animate-slide-in {
+  animation: slide-in 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 @layer components {
   .btn {
-    @apply px-4 py-2 rounded-lg font-bold shadow transition-transform duration-150 active:scale-95;
+    @apply px-3 py-1.5 rounded-lg font-bold shadow transition-transform duration-150 active:scale-95;
   }
   .btn-primary {
     @apply bg-mustard text-darkslate hover:bg-redbrick hover:text-vanilla;
@@ -33,6 +50,10 @@
     @apply bg-darkslate text-vanilla hover:bg-mustard hover:text-darkslate;
   }
   .card {
-    @apply bg-white bg-opacity-80 rounded-xl shadow p-4 border border-darkslate/10;
+    @apply bg-white bg-opacity-80 rounded-xl shadow p-3 border border-darkslate/10;
+  }
+  .container {
+    @apply px-3 py-3 mx-auto;
+    max-width: 1100px;
   }
 } 

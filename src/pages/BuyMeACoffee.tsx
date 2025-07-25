@@ -6,14 +6,22 @@ const BuyMeACoffee: React.FC = () => {
     const script = document.createElement("script");
     script.src = "https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js";
     script.setAttribute("data-name", "BMC-Widget");
+    script.setAttribute("data-id", "HeyLalit");
+    script.setAttribute("data-description", "Support me on Buy me a coffee!");
+    script.setAttribute(
+      "data-message",
+      "Your support means a latte! I'd really appreciate it if you could Buy Me A Coffee :)"
+    );
+    script.setAttribute("data-color", "#FFDD00");
+    script.setAttribute("data-position", "right");
+    script.setAttribute("data-x_margin", "20");
+    script.setAttribute("data-y_margin", "20");
     script.async = true;
     script.setAttribute("data-cfasync", "false");
-    script.onload = () => {
-      // Optionally, you can do something after the script loads
-    };
-    document.body.appendChild(script);
+    document.getElementById("bmc-widget-container")?.appendChild(script);
+    // Clean up
     return () => {
-      document.body.removeChild(script);
+      document.getElementById("bmc-widget-container")?.removeChild(script);
     };
   }, []);
 
@@ -28,18 +36,7 @@ const BuyMeACoffee: React.FC = () => {
         support our work, consider buying us a coffee! Your support helps us
         keep improving and building new features.
       </p>
-      <div
-        className="bmc-widget"
-        data-name="BMC-Widget"
-        data-cfasync="false"
-        data-id="lalitnamdev" // <-- Replace with your Buy Me a Coffee username
-        data-description="Support me on Buy me a coffee!"
-        data-message="Thank you for your support!"
-        data-color="#FFDD00"
-        data-position="Right"
-        data-x_margin="18"
-        data-y_margin="18"
-      ></div>
+      <div id="bmc-widget-container"></div>
     </div>
   );
 };
