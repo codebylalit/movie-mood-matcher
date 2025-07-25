@@ -2,7 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import localforage from "localforage";
 // @ts-ignore
 import { QRCodeCanvas } from "qrcode.react";
-import { LinkIcon, HeartIcon, SparklesIcon } from "@heroicons/react/24/solid";
+import {
+  LinkIcon,
+  HeartIcon,
+  SparklesIcon,
+  ArrowDownTrayIcon,
+} from "@heroicons/react/24/solid";
+import { ArrowDownTrayIcon as ArrowDownTrayOutlineIcon } from "@heroicons/react/24/outline";
 import Footer from "../components/Footer";
 
 const SHORTIFY_PREFIX = "https://shortify/";
@@ -223,7 +229,7 @@ const Shortify: React.FC = () => {
                   onClick={() => handleDownloadQR(urls[0].id)}
                   title="Download QR code as PNG"
                 >
-                  ⬇️ Download QR
+                  <ArrowDownTrayOutlineIcon className="w-5 h-5 inline-block" />
                 </button>
               </div>
             </div>
