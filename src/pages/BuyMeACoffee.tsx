@@ -3,10 +3,10 @@ import Footer from "../components/Footer";
 
 const BuyMeACoffee: React.FC = () => {
   return (
-    <div className="relative max-w-xl mx-auto py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 flex flex-col items-center">
+    <div className="relative max-w-xl mx-auto py-14 sm:py-12 md:py-12 lg:py-20 px-4 sm:px-6 md:px-8 flex flex-col items-center">
       {/* Arrow PNG image */}
       {/* Coffee Widget Doodles - positioned around the bottom right corner where the widget appears */}
-      <div className="fixed bottom-4 sm:bottom-8 md:bottom-12 lg:bottom-20 right-2 sm:right-4 md:right-6 w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 pointer-events-none z-10">
+      <div className="fixed bottom-8 sm:bottom-8 md:bottom-12 lg:bottom-20 right-2 sm:right-4 md:right-6 w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 pointer-events-none z-10">
         {/* Hand-drawn doodle 1 */}
         {/* <div className="absolute top-2 -left-4 w-10 h-10">
           <svg
