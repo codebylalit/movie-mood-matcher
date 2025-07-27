@@ -8,10 +8,15 @@ import {
   SparklesIcon,
   ArrowDownTrayIcon,
 } from "@heroicons/react/24/solid";
-import { ArrowDownTrayIcon as ArrowDownTrayOutlineIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowDownTrayIcon as ArrowDownTrayOutlineIcon,
+  ClipboardDocumentIcon,
+  EyeIcon,
+  ShareIcon,
+} from "@heroicons/react/24/outline";
 import Footer from "../components/Footer";
 
-const SHORTIFY_PREFIX = "https://shortify/";
+const SHORTIFY_PREFIX = window.location.origin + "/s/";
 
 function isValidUrl(url: string) {
   try {
@@ -38,6 +43,7 @@ type ShortUrl = {
   longUrl: string;
   shortUrl: string;
   clicks: number;
+  createdAt: Date;
 };
 
 const Shortify: React.FC = () => {
@@ -47,6 +53,7 @@ const Shortify: React.FC = () => {
   const [urls, setUrls] = useState<ShortUrl[]>([]);
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [dark, setDark] = useState(false);
+  const [qrSize, setQrSize] = useState(80);
   const qrRefs = useRef<{ [id: string]: HTMLCanvasElement | null }>({});
 
   useEffect(() => {
@@ -59,6 +66,22 @@ const Shortify: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    const updateQrSize = () => {
+      if (window.innerWidth < 640) {
+        setQrSize(40); // Mobile
+      } else if (window.innerWidth < 1024) {
+        setQrSize(50); // Tablet
+      } else {
+        setQrSize(70); // Desktop
+      }
+    };
+
+    updateQrSize();
+    window.addEventListener("resize", updateQrSize);
+    return () => window.removeEventListener("resize", updateQrSize);
+  }, []);
+
+  useEffect(() => {
     localforage.setItem("shortify-urls", urls);
   }, [urls]);
 
@@ -66,6 +89,91 @@ const Shortify: React.FC = () => {
     document.documentElement.classList.toggle("dark", dark);
     localforage.setItem("shortify-dark", dark);
   }, [dark]);
+
+  // Handle redirect for shortened URLs
+  useEffect(() => {
+    const handleRedirect = () => {
+      // Check for path-based redirects (production domain)
+      const path = window.location.pathname;
+      if (path.startsWith("/s/")) {
+        const shortId = path.substring(3); // Remove '/s/' prefix
+        const url = urls.find((u) => u.id === shortId);
+        if (url) {
+          const updatedUrls = urls.map((u) =>
+            u.id === shortId ? { ...u, clicks: u.clicks + 1 } : u
+          );
+          setUrls(updatedUrls);
+          localforage.setItem("shortify-urls", updatedUrls);
+          window.location.replace(url.longUrl);
+        } else {
+          window.location.replace("/");
+        }
+      }
+
+      // Check for hash-based redirects (local development)
+      const hash = window.location.hash;
+      if (hash.startsWith("#/s/")) {
+        const shortId = hash.substring(4);
+        const url = urls.find((u) => u.id === shortId);
+        if (url) {
+          const updatedUrls = urls.map((u) =>
+            u.id === shortId ? { ...u, clicks: u.clicks + 1 } : u
+          );
+          setUrls(updatedUrls);
+          localforage.setItem("shortify-urls", updatedUrls);
+          window.location.replace(url.longUrl);
+        } else {
+          window.location.replace("/");
+        }
+      }
+    };
+
+    handleRedirect();
+  }, [urls]);
+
+  // Check for redirects when URLs are loaded from storage
+  useEffect(() => {
+    const checkForRedirect = async () => {
+      const stored = await localforage.getItem("shortify-urls");
+      if (stored) {
+        const storedUrls = stored as ShortUrl[];
+
+        // Check path-based redirects
+        const path = window.location.pathname;
+        if (path.startsWith("/s/")) {
+          const shortId = path.substring(3);
+          const url = storedUrls.find((u) => u.id === shortId);
+          if (url) {
+            const updatedUrls = storedUrls.map((u) =>
+              u.id === shortId ? { ...u, clicks: u.clicks + 1 } : u
+            );
+            await localforage.setItem("shortify-urls", updatedUrls);
+            window.location.replace(url.longUrl);
+          } else {
+            window.location.replace("/");
+          }
+        }
+
+        // Check hash-based redirects
+        const hash = window.location.hash;
+        if (hash.startsWith("#/s/")) {
+          const shortId = hash.substring(4);
+          const url = storedUrls.find((u) => u.id === shortId);
+          if (url) {
+            const updatedUrls = storedUrls.map((u) =>
+              u.id === shortId ? { ...u, clicks: u.clicks + 1 } : u
+            );
+            await localforage.setItem("shortify-urls", updatedUrls);
+            window.location.replace(url.longUrl);
+          } else {
+            window.location.replace("/");
+          }
+        }
+      }
+    };
+
+    checkForRedirect();
+  }, []);
 
   const handleShorten = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -83,8 +191,16 @@ const Shortify: React.FC = () => {
     setLoading(true);
     setTimeout(() => {
       const id = generateShortId();
+      // Create a shortened URL that works with the current domain
       const shortUrl = SHORTIFY_PREFIX + id;
-      setUrls((prev) => [{ id, longUrl: url, shortUrl, clicks: 0 }, ...prev]);
+      const newUrl: ShortUrl = {
+        id,
+        longUrl: url,
+        shortUrl,
+        clicks: 0,
+        createdAt: new Date(),
+      };
+      setUrls((prev) => [newUrl, ...prev]);
       setInput("");
       setLoading(false);
     }, 700);
@@ -101,6 +217,19 @@ const Shortify: React.FC = () => {
       prev.map((u) => (u.id === id ? { ...u, clicks: u.clicks + 1 } : u))
     );
     window.open(url, "_blank");
+  };
+
+  const handleShare = async (shortUrl: string) => {
+    if (navigator.share) {
+      try {
+        await navigator.share({ url: shortUrl });
+      } catch (e) {
+        // user cancelled or error
+      }
+    } else {
+      navigator.clipboard.writeText(shortUrl);
+      alert("Link copied to clipboard!");
+    }
   };
 
   // Download QR as PNG
@@ -181,53 +310,117 @@ const Shortify: React.FC = () => {
           {urls.length > 0 && (
             <div
               key={urls[0].id}
-              className="card flex flex-col md:flex-row md:items-center gap-4 justify-between border-2 border-darkslate/10 shadow-lg hover:shadow-2xl transition-shadow bg-white/95 hover:bg-mustard/10 group ring-0 hover:ring-2 hover:ring-mustard/60 duration-200 p-3 md:p-4"
+              className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-darkslate/10 shadow-md sm:shadow-lg hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 overflow-hidden group"
             >
-              <div className="flex-1 min-w-0">
-                <div className="text-darkslate font-semibold break-all text-responsive-base mb-1">
-                  {urls[0].longUrl}
-                </div>
-                <div className="flex flex-wrap items-center gap-2 mt-1">
-                  <a
-                    href={urls[0].shortUrl}
-                    className="text-mustard underline hover:text-redbrick transition text-responsive-base break-all"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleVisit(urls[0].id, urls[0].longUrl);
-                    }}
-                    tabIndex={0}
-                    title="Open original URL"
+              {/* Main Content */}
+              <div className="p-3 sm:p-6">
+                <div className="flex flex-row items-start gap-3 sm:gap-6">
+                  {/* URL Content - 70% width */}
+                  <div
+                    className="flex-1 min-w-0 space-y-2 sm:space-y-3"
+                    style={{ width: "70%" }}
                   >
-                    {urls[0].shortUrl}
-                  </a>
-                  <button
-                    className="btn btn-secondary px-2 py-1 text-responsive-sm hover:bg-mustard hover:text-darkslate transition"
-                    onClick={() => handleCopy(urls[0].shortUrl, urls[0].id)}
-                    title="Copy short URL"
+                    {/* Original URL */}
+                    <div>
+                      <label className="text-xs font-semibold text-darkslate/60 uppercase tracking-wide mb-1 block">
+                        Original URL
+                      </label>
+                      <div className="text-xs sm:text-sm lg:text-base text-darkslate font-medium break-all bg-darkslate/5 rounded-lg p-2 sm:p-3">
+                        {urls[0].longUrl}
+                      </div>
+                    </div>
+
+                    {/* Shortened URL */}
+                    <div>
+                      <label className="text-xs font-semibold text-darkslate/60 uppercase tracking-wide mb-1 block">
+                        Shortened URL
+                      </label>
+                      <div className="flex items-center gap-1 bg-mustard/10 rounded-lg p-2 sm:p-2">
+                        <a
+                          href={urls[0].shortUrl}
+                          className="text-mustard font-mono text-xs sm:text-sm lg:text-base break-all hover:text-redbrick transition-colors flex-1"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleVisit(urls[0].id, urls[0].longUrl);
+                          }}
+                          title="Click to visit the original URL"
+                        >
+                          {urls[0].shortUrl}
+                        </a>
+                        <div className="flex gap-1 sm:gap-1">
+                          <button
+                            className="btn btn-secondary px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm hover:bg-mustard hover:text-darkslate transition-all duration-200 flex items-center gap-1 sm:gap-2"
+                            onClick={() =>
+                              handleCopy(urls[0].shortUrl, urls[0].id)
+                            }
+                            title="Copy short URL"
+                          >
+                            {copiedId === urls[0].id ? (
+                              <>
+                                <ClipboardDocumentIcon className="w-3 h-3 sm:w-4 sm:h-4" />
+                                <span className="sm:inline">Copied!</span>
+                              </>
+                            ) : (
+                              <>
+                                <ClipboardDocumentIcon className="w-3 h-3 sm:w-4 sm:h-4" />
+                                <span className="hidden sm:inline">Copy</span>
+                              </>
+                            )}
+                          </button>
+                          <button
+                            className="btn btn-primary px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm flex items-center gap-1 sm:gap-2"
+                            onClick={() =>
+                              handleVisit(urls[0].id, urls[0].longUrl)
+                            }
+                            title="Visit original URL"
+                          >
+                            <EyeIcon className="w-3 h-3 sm:w-4 sm:h-4" />
+                            <span className="hidden sm:inline">Visit</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* QR Code and Actions - 30% width */}
+                  <div
+                    className="flex flex-col mt-2 items-center gap-3 sm:gap-4"
+                    style={{ width: "30%" }}
                   >
-                    {copiedId === urls[0].id ? "Copied!" : "Copy"}
-                  </button>
+                    {/* QR Code */}
+                    <div className="bg-white rounded-lg sm:rounded-xl p-2 sm:p-3 shadow-md border border-darkslate/10">
+                      <QRCodeCanvas
+                        value={urls[0].shortUrl}
+                        size={qrSize}
+                        bgColor="#FFF3B0"
+                        fgColor="#335C67"
+                        level="H"
+                        includeMargin={true}
+                        ref={(el: HTMLCanvasElement | null) =>
+                          (qrRefs.current[urls[0].id] = el)
+                        }
+                      />
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="flex gap-1.5 sm:gap-2">
+                      <button
+                        className="flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-darkslate/10 hover:bg-darkslate/20 text-darkslate rounded-lg transition-all duration-200 text-xs sm:text-sm font-medium"
+                        onClick={() => handleDownloadQR(urls[0].id)}
+                        title="Download QR code"
+                      >
+                        <ArrowDownTrayOutlineIcon className="w-3 h-3 sm:w-4 sm:h-4" />
+                      </button>
+                      <button
+                        className="flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-mustard/20 hover:bg-mustard/30 text-darkslate rounded-lg transition-all duration-200 text-xs sm:text-sm font-medium"
+                        onClick={() => handleShare(urls[0].shortUrl)}
+                        title="Share link"
+                      >
+                        <ShareIcon className="w-3 h-3 sm:w-4 sm:h-4" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="flex flex-row md:flex-col items-center gap-2 md:ml-4 justify-center">
-                <QRCodeCanvas
-                  value={urls[0].shortUrl}
-                  size={56}
-                  bgColor="#FFF3B0"
-                  fgColor="#335C67"
-                  level="H"
-                  includeMargin={true}
-                  ref={(el: HTMLCanvasElement | null) =>
-                    (qrRefs.current[urls[0].id] = el)
-                  }
-                />
-                <button
-                  className="btn btn-primary px-2 py-1 text-responsive-sm mt-1 hover:bg-redbrick hover:text-vanilla transition w-full md:w-auto"
-                  onClick={() => handleDownloadQR(urls[0].id)}
-                  title="Download QR code as PNG"
-                >
-                  <ArrowDownTrayOutlineIcon className="w-5 h-5 inline-block" />
-                </button>
               </div>
             </div>
           )}
