@@ -23,6 +23,8 @@ const App: React.FC = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="/buy-me" element={<BuyMeACoffee />} />
+          {/* Catch-all route for shortened URLs */}
+          <Route path="/s/*" element={<Shortify />} />
         </Routes>
       </div>
       <Footer />

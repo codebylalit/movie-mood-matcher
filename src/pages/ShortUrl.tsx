@@ -92,87 +92,57 @@ const Shortify: React.FC = () => {
 
   // Handle redirect for shortened URLs
   useEffect(() => {
-    const handleRedirect = () => {
+    const handleRedirect = async () => {
       // Check for path-based redirects (production domain)
       const path = window.location.pathname;
       if (path.startsWith("/s/")) {
         const shortId = path.substring(3); // Remove '/s/' prefix
-        const url = urls.find((u) => u.id === shortId);
-        if (url) {
-          const updatedUrls = urls.map((u) =>
-            u.id === shortId ? { ...u, clicks: u.clicks + 1 } : u
-          );
-          setUrls(updatedUrls);
-          localforage.setItem("shortify-urls", updatedUrls);
-          window.location.replace(url.longUrl);
-        } else {
-          window.location.replace("/");
+        const stored = await localforage.getItem("shortify-urls");
+        if (stored) {
+          const storedUrls = stored as ShortUrl[];
+          const url = storedUrls.find((u) => u.id === shortId);
+          if (url) {
+            // Update click count
+            const updatedUrls = storedUrls.map((u) =>
+              u.id === shortId ? { ...u, clicks: u.clicks + 1 } : u
+            );
+            await localforage.setItem("shortify-urls", updatedUrls);
+            // Redirect to original URL immediately
+            window.location.replace(url.longUrl);
+            return; // Exit early to prevent further processing
+          }
         }
+        // URL not found, redirect to home page
+        window.location.replace("/");
+        return;
       }
 
       // Check for hash-based redirects (local development)
       const hash = window.location.hash;
       if (hash.startsWith("#/s/")) {
         const shortId = hash.substring(4);
-        const url = urls.find((u) => u.id === shortId);
-        if (url) {
-          const updatedUrls = urls.map((u) =>
-            u.id === shortId ? { ...u, clicks: u.clicks + 1 } : u
-          );
-          setUrls(updatedUrls);
-          localforage.setItem("shortify-urls", updatedUrls);
-          window.location.replace(url.longUrl);
-        } else {
-          window.location.replace("/");
+        const stored = await localforage.getItem("shortify-urls");
+        if (stored) {
+          const storedUrls = stored as ShortUrl[];
+          const url = storedUrls.find((u) => u.id === shortId);
+          if (url) {
+            // Update click count
+            const updatedUrls = storedUrls.map((u) =>
+              u.id === shortId ? { ...u, clicks: u.clicks + 1 } : u
+            );
+            await localforage.setItem("shortify-urls", updatedUrls);
+            // Redirect to original URL immediately
+            window.location.replace(url.longUrl);
+            return; // Exit early to prevent further processing
+          }
         }
+        // URL not found, redirect to home page
+        window.location.replace("/");
+        return;
       }
     };
 
     handleRedirect();
-  }, [urls]);
-
-  // Check for redirects when URLs are loaded from storage
-  useEffect(() => {
-    const checkForRedirect = async () => {
-      const stored = await localforage.getItem("shortify-urls");
-      if (stored) {
-        const storedUrls = stored as ShortUrl[];
-
-        // Check path-based redirects
-        const path = window.location.pathname;
-        if (path.startsWith("/s/")) {
-          const shortId = path.substring(3);
-          const url = storedUrls.find((u) => u.id === shortId);
-          if (url) {
-            const updatedUrls = storedUrls.map((u) =>
-              u.id === shortId ? { ...u, clicks: u.clicks + 1 } : u
-            );
-            await localforage.setItem("shortify-urls", updatedUrls);
-            window.location.replace(url.longUrl);
-          } else {
-            window.location.replace("/");
-          }
-        }
-
-        // Check hash-based redirects
-        const hash = window.location.hash;
-        if (hash.startsWith("#/s/")) {
-          const shortId = hash.substring(4);
-          const url = storedUrls.find((u) => u.id === shortId);
-          if (url) {
-            const updatedUrls = storedUrls.map((u) =>
-              u.id === shortId ? { ...u, clicks: u.clicks + 1 } : u
-            );
-            await localforage.setItem("shortify-urls", updatedUrls);
-            window.location.replace(url.longUrl);
-          } else {
-            window.location.replace("/");
-          }
-        }
-      }
-    };
-
-    checkForRedirect();
   }, []);
 
   const handleShorten = async (e: React.FormEvent) => {
