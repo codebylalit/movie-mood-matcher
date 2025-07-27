@@ -6,11 +6,91 @@
 
 @layer base {
   html {
-    font-size: 15px; /* Slightly smaller than default (16px) */
+    font-size: 14px; /* Smaller base font size for mobile */
   }
+  
+  /* Responsive font sizing */
+  @media (min-width: 640px) {
+    html {
+      font-size: 15px; /* Slightly larger for tablets */
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    html {
+      font-size: 16px; /* Full size for desktop */
+    }
+  }
+  
   body {
     @apply bg-vanilla text-darkslate;
     font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+  }
+  
+  /* Responsive text utilities */
+  .text-responsive-sm {
+    font-size: 0.875rem; /* 14px on mobile */
+  }
+  
+  .text-responsive-base {
+    font-size: 1rem; /* 16px on mobile */
+  }
+  
+  .text-responsive-lg {
+    font-size: 1.125rem; /* 18px on mobile */
+  }
+  
+  .text-responsive-xl {
+    font-size: 1.25rem; /* 20px on mobile */
+  }
+  
+  .text-responsive-2xl {
+    font-size: 1.5rem; /* 24px on mobile */
+  }
+  
+  @media (min-width: 640px) {
+    .text-responsive-sm {
+      font-size: 0.875rem; /* 14px */
+    }
+    
+    .text-responsive-base {
+      font-size: 1rem; /* 16px */
+    }
+    
+    .text-responsive-lg {
+      font-size: 1.125rem; /* 18px */
+    }
+    
+    .text-responsive-xl {
+      font-size: 1.25rem; /* 20px */
+    }
+    
+    .text-responsive-2xl {
+      font-size: 1.5rem; /* 24px */
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .text-responsive-sm {
+      font-size: 0.875rem; /* 14px */
+    }
+    
+    .text-responsive-base {
+      font-size: 1rem; /* 16px */
+    }
+    
+    .text-responsive-lg {
+      font-size: 1.125rem; /* 18px */
+    }
+    
+    .text-responsive-xl {
+      font-size: 1.25rem; /* 20px */
+    }
+    
+    .text-responsive-2xl {
+      font-size: 1.5rem; /* 24px */
+    }
   }
 }
 

@@ -2,8 +2,8 @@ import React from "react";
 
 const About: React.FC = () => (
   <div className="max-w-2xl mx-auto py-16 px-4">
-    <h1 className="text-3xl font-bold text-darkslate mb-6">About Us</h1>
-    <div className="space-y-6 text-darkslate/90 text-base">
+    <h1 className="text-responsive-2xl font-bold text-darkslate mb-6">About Us</h1>
+    <div className="space-y-6 text-darkslate/90 text-responsive-base">
       <p>
         Welcome to <b>Shortify</b>! Our mission is to make sharing and
         discovering content easier, faster, and more delightful. Whether you're
@@ -11,7 +11,7 @@ const About: React.FC = () => (
         and create.
       </p>
       <div>
-        <h2 className="font-bold text-lg mb-2">Our Mission</h2>
+        <h2 className="font-bold text-responsive-lg mb-2">Our Mission</h2>
         <p>
           We believe in the power of simplicity and accessibility. Shortify is
           designed to provide a seamless, privacy-focused experience for
@@ -19,7 +19,7 @@ const About: React.FC = () => (
         </p>
       </div>
       <div>
-        <h2 className="font-bold text-lg mb-2">Our Team</h2>
+        <h2 className="font-bold text-responsive-lg mb-2">Our Team</h2>
         <p>
           Shortify was built by a passionate team of creators and developers who
           value transparency, user privacy, and innovation. We are committed to
@@ -27,7 +27,7 @@ const About: React.FC = () => (
         </p>
       </div>
       <div>
-        <h2 className="font-bold text-lg mb-2">Our Values</h2>
+        <h2 className="font-bold text-responsive-lg mb-2">Our Values</h2>
         <ul className="list-disc ml-6">
           <li>Privacy-first: Your data stays with you.</li>
           <li>Speed and simplicity: Shorten and share links in seconds.</li>

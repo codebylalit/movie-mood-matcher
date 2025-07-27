@@ -125,7 +125,7 @@ const Shortify: React.FC = () => {
         >
           <label
             htmlFor="url"
-            className="font-semibold text-darkslate text-lg text-center mb-1 font-sans"
+            className="font-semibold text-darkslate text-responsive-lg text-center mb-1 font-sans"
           >
             Paste your long URL
           </label>
@@ -133,7 +133,7 @@ const Shortify: React.FC = () => {
             <input
               id="url"
               type="text"
-              className="flex-1 rounded-full border-2 border-darkslate/20 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-mustard focus:border-mustard bg-vanilla text-darkslate placeholder:text-darkslate/40 shadow text-base sm:text-lg font-mono transition-all min-w-0"
+              className="flex-1 rounded-full border-2 border-darkslate/20 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-mustard focus:border-mustard bg-vanilla text-darkslate placeholder:text-darkslate/40 shadow text-responsive-base font-mono transition-all min-w-0"
               placeholder="https://example.com/very/long/url"
               value={input}
               onChange={(e) => setInput(e.target.value)}
@@ -142,7 +142,7 @@ const Shortify: React.FC = () => {
             />
             <button
               type="submit"
-              className="btn btn-primary min-w-[120px] flex items-center justify-center shadow hover:scale-105 text-base sm:text-lg rounded-full font-bold transition-all"
+              className="btn btn-primary min-w-[120px] flex items-center justify-center shadow hover:scale-105 text-responsive-base rounded-full font-bold transition-all"
               disabled={loading}
               title="Shorten URL"
             >
@@ -160,12 +160,12 @@ const Shortify: React.FC = () => {
             </button>
           </div>
           {error && (
-            <div className="text-redbrick font-semibold text-sm mt-1 text-center">
+            <div className="text-redbrick font-semibold text-responsive-sm mt-1 text-center">
               {error}
             </div>
           )}
         </form>
-        <div className="w-full max-w-xl flex items-center gap-2 text-darkslate/70 text-base mb-4">
+        <div className="w-full max-w-xl flex items-center gap-2 text-darkslate/70 text-responsive-base mb-4">
           <span className="font-bold">Total URLs shortened:</span>{" "}
           <span className="bg-mustard px-2 py-1 rounded text-darkslate font-mono">
             {urls.length}
@@ -174,7 +174,7 @@ const Shortify: React.FC = () => {
         <hr className="w-full max-w-xl border-t border-darkslate/10 mb-8" />
         <div className="w-full max-w-2xl space-y-6">
           {urls.length === 0 && (
-            <div className="text-darkslate/60 italic text-center">
+            <div className="text-darkslate/60 italic text-center text-responsive-base">
               No URLs shortened yet. Try it out!
             </div>
           )}
@@ -184,13 +184,13 @@ const Shortify: React.FC = () => {
               className="card flex flex-col md:flex-row md:items-center gap-4 justify-between border-2 border-darkslate/10 shadow-lg hover:shadow-2xl transition-shadow bg-white/95 hover:bg-mustard/10 group ring-0 hover:ring-2 hover:ring-mustard/60 duration-200 p-3 md:p-4"
             >
               <div className="flex-1 min-w-0">
-                <div className="text-darkslate font-semibold break-all text-base sm:text-lg mb-1">
+                <div className="text-darkslate font-semibold break-all text-responsive-base mb-1">
                   {urls[0].longUrl}
                 </div>
                 <div className="flex flex-wrap items-center gap-2 mt-1">
                   <a
                     href={urls[0].shortUrl}
-                    className="text-mustard underline hover:text-redbrick transition text-base sm:text-lg break-all"
+                    className="text-mustard underline hover:text-redbrick transition text-responsive-base break-all"
                     onClick={(e) => {
                       e.preventDefault();
                       handleVisit(urls[0].id, urls[0].longUrl);
@@ -201,7 +201,7 @@ const Shortify: React.FC = () => {
                     {urls[0].shortUrl}
                   </a>
                   <button
-                    className="btn btn-secondary px-2 py-1 text-xs sm:text-sm hover:bg-mustard hover:text-darkslate transition"
+                    className="btn btn-secondary px-2 py-1 text-responsive-sm hover:bg-mustard hover:text-darkslate transition"
                     onClick={() => handleCopy(urls[0].shortUrl, urls[0].id)}
                     title="Copy short URL"
                   >
@@ -222,7 +222,7 @@ const Shortify: React.FC = () => {
                   }
                 />
                 <button
-                  className="btn btn-primary px-2 py-1 text-xs mt-1 hover:bg-redbrick hover:text-vanilla transition w-full md:w-auto"
+                  className="btn btn-primary px-2 py-1 text-responsive-sm mt-1 hover:bg-redbrick hover:text-vanilla transition w-full md:w-auto"
                   onClick={() => handleDownloadQR(urls[0].id)}
                   title="Download QR code as PNG"
                 >

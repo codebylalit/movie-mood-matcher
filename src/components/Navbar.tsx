@@ -27,7 +27,7 @@ const Navbar: React.FC = () => {
           <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-mustard text-darkslate shadow border border-darkslate/10">
             <LinkIcon className="w-5 h-5" />
           </span>
-          <span className="text-lg font-bold text-darkslate select-none">
+          <span className="text-responsive-lg font-bold text-darkslate select-none">
             Shortify
           </span>
         </div>
@@ -50,7 +50,7 @@ const Navbar: React.FC = () => {
               <NavLink
                 to={link.to}
                 className={({ isActive }) =>
-                  `px-3 py-2 rounded-lg font-semibold transition-colors duration-150 text-darkslate hover:bg-mustard/30 hover:text-darkslate/90 text-sm sm:text-base ${
+                  `px-3 py-2 rounded-lg font-semibold transition-colors duration-150 text-darkslate hover:bg-mustard/30 hover:text-darkslate/90 text-responsive-sm ${
                     isActive ? "bg-mustard text-darkslate shadow font-bold" : ""
                   }`
                 }
@@ -64,9 +64,9 @@ const Navbar: React.FC = () => {
         {/* CTA Button - desktop */}
         <NavLink
           to="/buy-me"
-          className="hidden sm:inline-block ml-2 px-5 py-2 bg-white border-2 border-mustard text-darkslate font-bold rounded-full shadow hover:bg-mustard hover:text-white transition text-sm sm:text-base"
+          className="hidden sm:inline-block ml-2 px-5 py-2 bg-white border-2 border-mustard text-darkslate font-bold rounded-full shadow hover:bg-mustard hover:text-white transition text-responsive-sm"
         >
-          Buy Me a Coffee
+          Coffee Time!
         </NavLink>
       </div>
       {/* Mobile menu overlay */}
@@ -92,7 +92,7 @@ const Navbar: React.FC = () => {
                   <NavLink
                     to={link.to}
                     className={({ isActive }) =>
-                      `block px-3 py-2 rounded-lg font-semibold transition-colors duration-150 text-darkslate hover:bg-mustard/30 hover:text-darkslate/90 text-base ${
+                      `block px-3 py-2 rounded-lg font-semibold transition-colors duration-150 text-darkslate hover:bg-mustard/30 hover:text-darkslate/90 text-responsive-base ${
                         isActive
                           ? "bg-mustard text-darkslate shadow font-bold"
                           : ""
@@ -108,7 +108,7 @@ const Navbar: React.FC = () => {
             </ul>
             <NavLink
               to="/buy-me"
-              className="mt-4 px-5 py-2 bg-white border-2 border-mustard text-darkslate font-bold rounded-full shadow hover:bg-mustard hover:text-white transition text-base"
+              className="mt-4 px-5 py-2 bg-white border-2 border-mustard text-darkslate font-bold rounded-full shadow hover:bg-mustard hover:text-white transition text-responsive-base"
               onClick={() => setMenuOpen(false)}
             >
               Buy Me a Coffee
