@@ -15,6 +15,7 @@ import {
   ShareIcon,
 } from "@heroicons/react/24/outline";
 import Footer from "../components/Footer";
+import { useTheme } from "../contexts/ThemeContext";
 
 const SHORTIFY_PREFIX = window.location.origin + "/s/";
 
@@ -52,16 +53,13 @@ const Shortify: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [urls, setUrls] = useState<ShortUrl[]>([]);
   const [copiedId, setCopiedId] = useState<string | null>(null);
-  const [dark, setDark] = useState(false);
   const [qrSize, setQrSize] = useState(80);
   const qrRefs = useRef<{ [id: string]: HTMLCanvasElement | null }>({});
+  const { isDark } = useTheme();
 
   useEffect(() => {
     localforage.getItem("shortify-urls").then((stored: unknown) => {
       if (stored) setUrls(stored as ShortUrl[]);
-    });
-    localforage.getItem("shortify-dark").then((val: unknown) => {
-      setDark(val === true);
     });
   }, []);
 
@@ -84,11 +82,6 @@ const Shortify: React.FC = () => {
   useEffect(() => {
     localforage.setItem("shortify-urls", urls);
   }, [urls]);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", dark);
-    localforage.setItem("shortify-dark", dark);
-  }, [dark]);
 
   // Handle redirect for shortened URLs
   useEffect(() => {
@@ -220,11 +213,11 @@ const Shortify: React.FC = () => {
       <main className="flex-1 flex flex-col items-center justify-center px-2 sm:px-4 py-6 sm:py-10">
         <form
           onSubmit={handleShorten}
-          className="w-full max-w-xl card flex flex-col gap-4 shadow-xl mb-8 border border-darkslate/10"
+          className="w-full max-w-xl card flex flex-col gap-4 shadow-xl mb-8 border border-darkslate/10 dark:border-vanilla/10 bg-white/90 dark:bg-darkslate/90 backdrop-blur-sm"
         >
           <label
             htmlFor="url"
-            className="font-semibold text-darkslate text-responsive-lg text-center mb-1 font-sans"
+            className="font-semibold text-darkslate dark:text-vanilla text-responsive-lg text-center mb-1 font-sans"
           >
             Paste your long URL
           </label>
@@ -232,7 +225,7 @@ const Shortify: React.FC = () => {
             <input
               id="url"
               type="text"
-              className="flex-1 rounded-full border-2 border-darkslate/20 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-mustard focus:border-mustard bg-vanilla text-darkslate placeholder:text-darkslate/40 shadow text-responsive-base font-mono transition-all min-w-0"
+              className="flex-1 rounded-full border-2 border-darkslate/20 dark:border-vanilla/20 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-mustard dark:focus:ring-vanilla focus:border-mustard dark:focus:border-vanilla bg-vanilla dark:bg-darkslate text-darkslate dark:text-vanilla placeholder:text-darkslate/40 dark:placeholder:text-vanilla/40 shadow text-responsive-base font-mono transition-all min-w-0"
               placeholder="https://example.com/very/long/url"
               value={input}
               onChange={(e) => setInput(e.target.value)}
@@ -259,28 +252,28 @@ const Shortify: React.FC = () => {
             </button>
           </div>
           {error && (
-            <div className="text-redbrick font-semibold text-responsive-sm mt-1 text-center">
+            <div className="text-redbrick dark:text-redbrick font-semibold text-responsive-sm mt-1 text-center">
               {error}
             </div>
           )}
         </form>
-        <div className="w-full max-w-xl flex items-center gap-2 text-darkslate/70 text-responsive-base mb-4">
+        <div className="w-full max-w-xl flex items-center gap-2 text-darkslate/70 dark:text-vanilla/70 text-responsive-base mb-4">
           <span className="font-bold">Total URLs shortened:</span>{" "}
-          <span className="bg-mustard px-2 py-1 rounded text-darkslate font-mono">
+          <span className="bg-mustard dark:bg-vanilla px-2 py-1 rounded text-darkslate dark:text-darkslate font-mono">
             {urls.length}
           </span>
         </div>
-        <hr className="w-full max-w-xl border-t border-darkslate/10 mb-8" />
+        <hr className="w-full max-w-xl border-t border-darkslate/10 dark:border-vanilla/10 mb-8" />
         <div className="w-full max-w-2xl space-y-6">
           {urls.length === 0 && (
-            <div className="text-darkslate/60 italic text-center text-responsive-base">
+            <div className="text-darkslate/60 dark:text-vanilla/60 italic text-center text-responsive-base">
               No URLs shortened yet. Try it out!
             </div>
           )}
           {urls.length > 0 && (
             <div
               key={urls[0].id}
-              className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-darkslate/10 shadow-md sm:shadow-lg hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 overflow-hidden group"
+              className="bg-white/90 dark:bg-darkslate/90 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-darkslate/10 dark:border-vanilla/10 shadow-md sm:shadow-lg hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 overflow-hidden group"
             >
               {/* Main Content */}
               <div className="p-3 sm:p-6">
@@ -292,23 +285,23 @@ const Shortify: React.FC = () => {
                   >
                     {/* Original URL */}
                     <div>
-                      <label className="text-xs font-semibold text-darkslate/60 uppercase tracking-wide mb-1 block">
+                      <label className="text-xs font-semibold text-darkslate/60 dark:text-vanilla/60 uppercase tracking-wide mb-1 block">
                         Original URL
                       </label>
-                      <div className="text-xs sm:text-sm lg:text-base text-darkslate font-medium break-all bg-darkslate/5 rounded-lg p-2 sm:p-3">
+                      <div className="text-xs sm:text-sm lg:text-base text-darkslate dark:text-vanilla font-medium break-all bg-darkslate/5 dark:bg-vanilla/5 rounded-lg p-2 sm:p-3">
                         {urls[0].longUrl}
                       </div>
                     </div>
 
                     {/* Shortened URL */}
                     <div>
-                      <label className="text-xs font-semibold text-darkslate/60 uppercase tracking-wide mb-1 block">
+                      <label className="text-xs font-semibold text-darkslate/60 dark:text-vanilla/60 uppercase tracking-wide mb-1 block">
                         Shortened URL
                       </label>
-                      <div className="flex items-center gap-1 bg-mustard/10 rounded-lg p-2 sm:p-2">
+                      <div className="flex items-center gap-1 bg-mustard/10 dark:bg-vanilla/10 rounded-lg p-2 sm:p-2">
                         <a
                           href={urls[0].shortUrl}
-                          className="text-mustard font-mono text-xs sm:text-sm lg:text-base break-all hover:text-redbrick transition-colors flex-1"
+                          className="text-mustard dark:text-vanilla font-mono text-xs sm:text-sm lg:text-base break-all hover:text-redbrick dark:hover:text-mustard transition-colors flex-1"
                           onClick={(e) => {
                             e.preventDefault();
                             handleVisit(urls[0].id, urls[0].longUrl);
@@ -358,12 +351,12 @@ const Shortify: React.FC = () => {
                     style={{ width: "30%" }}
                   >
                     {/* QR Code */}
-                    <div className="bg-white rounded-lg sm:rounded-xl p-2 sm:p-3 shadow-md border border-darkslate/10">
+                    <div className="bg-white dark:bg-darkslate rounded-lg sm:rounded-xl p-2 sm:p-3 shadow-md border border-darkslate/10 dark:border-vanilla/10">
                       <QRCodeCanvas
                         value={urls[0].shortUrl}
                         size={qrSize}
-                        bgColor="#FFF3B0"
-                        fgColor="#335C67"
+                        bgColor={isDark ? "#335C67" : "#FFF3B0"}
+                        fgColor={isDark ? "#FFF3B0" : "#335C67"}
                         level="H"
                         includeMargin={true}
                         ref={(el: HTMLCanvasElement | null) =>
@@ -375,14 +368,14 @@ const Shortify: React.FC = () => {
                     {/* Action Buttons */}
                     <div className="flex gap-1.5 sm:gap-2">
                       <button
-                        className="flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-darkslate/10 hover:bg-darkslate/20 text-darkslate rounded-lg transition-all duration-200 text-xs sm:text-sm font-medium"
+                        className="flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-darkslate/10 dark:bg-vanilla/10 hover:bg-darkslate/20 dark:hover:bg-vanilla/20 text-darkslate dark:text-vanilla rounded-lg transition-all duration-200 text-xs sm:text-sm font-medium"
                         onClick={() => handleDownloadQR(urls[0].id)}
                         title="Download QR code"
                       >
                         <ArrowDownTrayOutlineIcon className="w-3 h-3 sm:w-4 sm:h-4" />
                       </button>
                       <button
-                        className="flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-mustard/20 hover:bg-mustard/30 text-darkslate rounded-lg transition-all duration-200 text-xs sm:text-sm font-medium"
+                        className="flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-mustard/20 dark:bg-vanilla/20 hover:bg-mustard/30 dark:hover:bg-vanilla/30 text-darkslate dark:text-vanilla rounded-lg transition-all duration-200 text-xs sm:text-sm font-medium"
                         onClick={() => handleShare(urls[0].shortUrl)}
                         title="Share link"
                       >

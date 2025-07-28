@@ -11,22 +11,22 @@ const Contact: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <div className="flex-1 max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 font-sans flex flex-col items-center justify-center">
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-darkslate mb-4 sm:mb-6 font-sans text-center">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-darkslate dark:text-vanilla mb-4 sm:mb-6 font-sans text-center">
           Contact Us
         </h1>
-        <p className="mb-6 sm:mb-8 text-darkslate/80 text-center text-sm sm:text-base px-2 sm:px-0 max-w-lg">
+        <p className="mb-6 sm:mb-8 text-darkslate/80 dark:text-vanilla/80 text-center text-sm sm:text-base px-2 sm:px-0 max-w-lg">
           Have a question, suggestion, or just want to say hi? Fill out the form
           below and we'll get back to you soon!
         </p>
         {submitted ? (
-          <div className="bg-mustard/20 border border-mustard text-darkslate rounded-lg p-4 sm:p-6 text-center font-semibold w-full max-w-md mx-auto">
+          <div className="bg-mustard/20 dark:bg-vanilla/20 border border-mustard dark:border-vanilla text-darkslate dark:text-vanilla rounded-lg p-4 sm:p-6 text-center font-semibold w-full max-w-md mx-auto">
             <p className="text-sm sm:text-base">
               Thank you for reaching out! We'll be in touch soon.
             </p>
           </div>
         ) : (
           <form
-            className="space-y-4 sm:space-y-6 bg-white/80 rounded-xl shadow-lg p-4 sm:p-6 lg:p-8 border border-darkslate/10 w-full max-w-lg mx-auto flex flex-col items-center"
+            className="space-y-4 sm:space-y-6 bg-white/80 dark:bg-darkslate/80 rounded-xl shadow-lg p-4 sm:p-6 lg:p-8 border border-darkslate/10 dark:border-vanilla/10 w-full max-w-lg mx-auto flex flex-col items-center"
             action={FORMSPREE_ENDPOINT}
             method="POST"
             target="_blank"
@@ -38,7 +38,7 @@ const Contact: React.FC = () => {
             <div className="w-full">
               <label
                 htmlFor="name"
-                className="block font-semibold mb-1 sm:mb-2 text-darkslate text-sm sm:text-base"
+                className="block font-semibold mb-1 sm:mb-2 text-darkslate dark:text-vanilla text-sm sm:text-base"
               >
                 Name
               </label>
@@ -47,14 +47,14 @@ const Contact: React.FC = () => {
                 id="name"
                 name="name"
                 required
-                className="w-full rounded-lg border-2 border-darkslate/20 px-3 py-2 sm:py-3 focus:outline-none focus:border-mustard bg-vanilla text-darkslate placeholder:text-darkslate/40 shadow text-sm sm:text-base"
+                className="w-full rounded-lg border-2 border-darkslate/20 dark:border-vanilla/20 px-3 py-2 sm:py-3 focus:outline-none focus:border-mustard dark:focus:border-vanilla bg-vanilla dark:bg-darkslate text-darkslate dark:text-vanilla placeholder:text-darkslate/40 dark:placeholder:text-vanilla/40 shadow text-sm sm:text-base"
                 placeholder="Your name"
               />
             </div>
             <div className="w-full">
               <label
                 htmlFor="email"
-                className="block font-semibold mb-1 sm:mb-2 text-darkslate text-sm sm:text-base"
+                className="block font-semibold mb-1 sm:mb-2 text-darkslate dark:text-vanilla text-sm sm:text-base"
               >
                 Email
               </label>
@@ -63,14 +63,14 @@ const Contact: React.FC = () => {
                 id="email"
                 name="email"
                 required
-                className="w-full rounded-lg border-2 border-darkslate/20 px-3 py-2 sm:py-3 focus:outline-none focus:border-mustard bg-vanilla text-darkslate placeholder:text-darkslate/40 shadow text-sm sm:text-base"
+                className="w-full rounded-lg border-2 border-darkslate/20 dark:border-vanilla/20 px-3 py-2 sm:py-3 focus:outline-none focus:border-mustard dark:focus:border-vanilla bg-vanilla dark:bg-darkslate text-darkslate dark:text-vanilla placeholder:text-darkslate/40 dark:placeholder:text-vanilla/40 shadow text-sm sm:text-base"
                 placeholder="you@email.com"
               />
             </div>
             <div className="w-full">
               <label
                 htmlFor="message"
-                className="block font-semibold mb-1 sm:mb-2 text-darkslate text-sm sm:text-base"
+                className="block font-semibold mb-1 sm:mb-2 text-darkslate dark:text-vanilla text-sm sm:text-base"
               >
                 Message
               </label>
@@ -79,7 +79,7 @@ const Contact: React.FC = () => {
                 name="message"
                 required
                 rows={4}
-                className="w-full rounded-lg border-2 border-darkslate/20 px-3 py-2 sm:py-3 focus:outline-none focus:border-mustard bg-vanilla text-darkslate placeholder:text-darkslate/40 shadow text-sm sm:text-base resize-none"
+                className="w-full rounded-lg border-2 border-darkslate/20 dark:border-vanilla/20 px-3 py-2 sm:py-3 focus:outline-none focus:border-mustard dark:focus:border-vanilla bg-vanilla dark:bg-darkslate text-darkslate dark:text-vanilla placeholder:text-darkslate/40 dark:placeholder:text-vanilla/40 shadow text-sm sm:text-base resize-none"
                 placeholder="How can we help you?"
               />
             </div>

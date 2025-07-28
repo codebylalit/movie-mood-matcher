@@ -124,13 +124,13 @@
     @apply px-3 py-1.5 rounded-lg font-bold shadow transition-transform duration-150 active:scale-95;
   }
   .btn-primary {
-    @apply bg-mustard text-darkslate hover:bg-redbrick hover:text-vanilla;
+    @apply bg-mustard text-darkslate hover:bg-redbrick hover:text-vanilla dark:bg-vanilla dark:text-darkslate dark:hover:bg-mustard dark:hover:text-vanilla;
   }
   .btn-secondary {
-    @apply bg-darkslate text-vanilla hover:bg-mustard hover:text-darkslate;
+    @apply bg-darkslate text-vanilla hover:bg-mustard hover:text-darkslate dark:bg-vanilla dark:text-darkslate dark:hover:bg-mustard dark:hover:text-vanilla;
   }
   .card {
-    @apply bg-white bg-opacity-80 rounded-xl shadow p-3 border border-darkslate/10;
+    @apply bg-white bg-opacity-80 rounded-xl shadow p-3 border border-darkslate/10 dark:bg-darkslate dark:bg-opacity-80 dark:border-vanilla/10;
   }
   .container {
     @apply px-3 py-3 mx-auto;

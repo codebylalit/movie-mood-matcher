@@ -10,6 +10,7 @@ import {
   ClipboardDocumentIcon,
   EyeIcon,
 } from "@heroicons/react/24/outline";
+import { useTheme } from "../contexts/ThemeContext";
 
 type ShortUrl = {
   id: string;
@@ -24,6 +25,7 @@ const MyLinks: React.FC = () => {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [qrSize, setQrSize] = useState(80);
   const qrRefs = useRef<{ [id: string]: HTMLCanvasElement | null }>({});
+  const { isDark } = useTheme();
 
   useEffect(() => {
     localforage.getItem("shortify-urls").then((stored: unknown) => {
@@ -108,12 +110,12 @@ const MyLinks: React.FC = () => {
         <div className="w-full max-w-4xl mb-8">
           <div className="text-center mb-6">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <LinkIcon className="w-8 h-8 text-mustard" />
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-darkslate">
+              <LinkIcon className="w-8 h-8 text-mustard dark:text-vanilla" />
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-darkslate dark:text-vanilla">
                 My Links
               </h1>
             </div>
-            <p className="text-darkslate/70 text-base sm:text-lg max-w-2xl mx-auto">
+            <p className="text-darkslate/70 dark:text-vanilla/70 text-base sm:text-lg max-w-2xl mx-auto">
               Manage and track all your shortened URLs in one place
             </p>
           </div>
@@ -159,12 +161,12 @@ const MyLinks: React.FC = () => {
         <div className="w-full max-w-4xl space-y-3 sm:space-y-6 max-h-[70vh] overflow-y-auto pr-2">
           {urls.length === 0 ? (
             <div className="text-center py-8 sm:py-16">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-12 border border-darkslate/10 shadow-lg">
-                <LinkIcon className="w-12 h-12 sm:w-16 sm:h-16 text-darkslate/30 mx-auto mb-4" />
-                <h3 className="text-lg sm:text-2xl font-semibold text-darkslate mb-2">
+              <div className="bg-white/80 dark:bg-darkslate/80 backdrop-blur-sm rounded-2xl p-6 sm:p-12 border border-darkslate/10 dark:border-vanilla/10 shadow-lg">
+                <LinkIcon className="w-12 h-12 sm:w-16 sm:h-16 text-darkslate/30 dark:text-vanilla/30 mx-auto mb-4" />
+                <h3 className="text-lg sm:text-2xl font-semibold text-darkslate dark:text-vanilla mb-2">
                   No Links Yet
                 </h3>
-                <p className="text-darkslate/60 text-sm sm:text-lg mb-6 max-w-md mx-auto">
+                <p className="text-darkslate/60 dark:text-vanilla/60 text-sm sm:text-lg mb-6 max-w-md mx-auto">
                   Start creating shortened URLs to see them appear here!
                 </p>
                 <a
@@ -180,7 +182,7 @@ const MyLinks: React.FC = () => {
             urls.map((u) => (
               <div
                 key={u.id}
-                className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-darkslate/10 shadow-md sm:shadow-lg hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 overflow-hidden group"
+                className="bg-white/90 dark:bg-darkslate/90 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-darkslate/10 dark:border-vanilla/10 shadow-md sm:shadow-lg hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 overflow-hidden group"
               >
                 {/* Main Content */}
                 <div className="p-3 sm:p-6">
@@ -192,10 +194,10 @@ const MyLinks: React.FC = () => {
                     >
                       {/* Original URL */}
                       <div>
-                        <label className="text-xs font-semibold text-darkslate/60 uppercase tracking-wide mb-1 block">
+                        <label className="text-xs font-semibold text-darkslate/60 dark:text-vanilla/60 uppercase tracking-wide mb-1 block">
                           Original URL
                         </label>
-                        <div className="text-xs sm:text-sm lg:text-base text-darkslate font-medium break-all bg-darkslate/5 rounded-lg p-2 sm:p-3">
+                        <div className="text-xs sm:text-sm lg:text-base text-darkslate dark:text-vanilla font-medium break-all bg-darkslate/5 dark:bg-vanilla/5 rounded-lg p-2 sm:p-3">
                           {expandedId === u.id
                             ? u.longUrl
                             : truncateUrl(u.longUrl, 60)}
@@ -204,7 +206,7 @@ const MyLinks: React.FC = () => {
                               onClick={() =>
                                 setExpandedId(expandedId === u.id ? null : u.id)
                               }
-                              className="ml-2 text-mustard hover:text-redbrick text-xs sm:text-sm font-medium"
+                              className="ml-2 text-mustard dark:text-vanilla hover:text-redbrick dark:hover:text-mustard text-xs sm:text-sm font-medium"
                             >
                               {expandedId === u.id ? "Show less" : "Show more"}
                             </button>
@@ -214,7 +216,7 @@ const MyLinks: React.FC = () => {
 
                       {/* Shortened URL */}
                       <div>
-                        <label className="text-xs font-semibold text-darkslate/60 uppercase tracking-wide mb-1 block">
+                        <label className="text-xs font-semibold text-darkslate/60 dark:text-vanilla/60 uppercase tracking-wide mb-1 block">
                           Shortened URL
                         </label>
                         <div className="flex items-center gap-1 bg-mustard/10 rounded-lg p-2 sm:p-2">
@@ -276,12 +278,12 @@ const MyLinks: React.FC = () => {
                       style={{ width: "30%" }}
                     >
                       {/* QR Code */}
-                      <div className="bg-white rounded-lg sm:rounded-xl p-2 sm:p-3 shadow-md border border-darkslate/10">
+                      <div className="bg-white dark:bg-darkslate rounded-lg sm:rounded-xl p-2 sm:p-3 shadow-md border border-darkslate/10 dark:border-vanilla/10">
                         <QRCodeCanvas
                           value={u.shortUrl}
                           size={qrSize}
-                          bgColor="#FFF3B0"
-                          fgColor="#335C67"
+                          bgColor={isDark ? "#335C67" : "#FFF3B0"}
+                          fgColor={isDark ? "#FFF3B0" : "#335C67"}
                           level="H"
                           includeMargin={true}
                           ref={(el: HTMLCanvasElement | null) =>
@@ -293,7 +295,7 @@ const MyLinks: React.FC = () => {
                       {/* Action Buttons */}
                       <div className="flex  gap-1.5 sm:gap-2">
                         <button
-                          className="flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-darkslate/10 hover:bg-darkslate/20 text-darkslate rounded-lg transition-all duration-200 text-xs sm:text-sm font-medium"
+                          className="flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-darkslate/10 dark:bg-vanilla/10 hover:bg-darkslate/20 dark:hover:bg-vanilla/20 text-darkslate dark:text-vanilla rounded-lg transition-all duration-200 text-xs sm:text-sm font-medium"
                           onClick={() => handleDownloadQR(u.id)}
                           title="Download QR code"
                         >
@@ -301,7 +303,7 @@ const MyLinks: React.FC = () => {
                           {/* <span className="hidden sm:inline">Download QR</span> */}
                         </button>
                         <button
-                          className="flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-mustard/20 hover:bg-mustard/30 text-darkslate rounded-lg transition-all duration-200 text-xs sm:text-sm font-medium"
+                          className="flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-mustard/20 dark:bg-vanilla/20 hover:bg-mustard/30 dark:hover:bg-vanilla/30 text-darkslate dark:text-vanilla rounded-lg transition-all duration-200 text-xs sm:text-sm font-medium"
                           onClick={() => handleShare(u.shortUrl)}
                           title="Share link"
                         >

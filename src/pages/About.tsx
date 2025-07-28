@@ -2,8 +2,10 @@ import React from "react";
 
 const About: React.FC = () => (
   <div className="max-w-2xl mx-auto py-16 px-4">
-    <h1 className="text-responsive-2xl font-bold text-darkslate mb-6">About Us</h1>
-    <div className="space-y-6 text-darkslate/90 text-responsive-base">
+    <h1 className="text-responsive-2xl font-bold text-darkslate dark:text-vanilla mb-6">
+      About Us
+    </h1>
+    <div className="space-y-6 text-darkslate/90 dark:text-vanilla/90 text-responsive-base">
       <p>
         Welcome to <b>Shortify</b>! Our mission is to make sharing and
         discovering content easier, faster, and more delightful. Whether you're
@@ -39,7 +41,10 @@ const About: React.FC = () => (
         <p>
           Thank you for being part of our journey. If you have feedback or want
           to get in touch, please visit our{" "}
-          <a href="/contact" className="text-mustard hover:underline">
+          <a
+            href="/contact"
+            className="text-mustard dark:text-vanilla hover:underline"
+          >
             Contact
           </a>{" "}
           page.
