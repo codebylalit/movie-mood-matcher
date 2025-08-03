@@ -2,7 +2,7 @@
 
 Shortify is a modern, privacy-focused URL shortener built with React and TypeScript. Create short, shareable links instantly with QR code generation, click tracking, and a beautiful responsive interface.
 
-## ✨ Features
+## Features
 
 - **🔗 URL Shortening:** Convert long URLs into short, shareable links
 - **📱 QR Code Generation:** Generate QR codes for easy mobile sharing
@@ -73,7 +73,7 @@ src/
 └── index.css               # Global styles and Tailwind CSS
 ```
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Frontend:** React 18 with TypeScript
 - **Styling:** Tailwind CSS with custom design system
@@ -83,7 +83,7 @@ src/
 - **Icons:** Heroicons
 - **Build Tool:** Create React App
 
-## 🎨 Design System
+## Design System
 
 The app uses a custom color palette:
 
@@ -153,7 +153,7 @@ This project is licensed under the MIT License.
 
 If you find this project helpful, consider supporting the development:
 
-- Visit the "Coffee Time!" page to buy the developer a coffee
+- Visit the "Coffee Time!" page to buy a coffee to me :)
 - Star the repository on GitHub
 - Share with friends and colleagues
 
