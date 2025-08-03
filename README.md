@@ -4,15 +4,16 @@ Shortify is a modern, privacy-focused URL shortener built with React and TypeScr
 
 ## Features
 
-- **🔗 URL Shortening:** Convert long URLs into short, shareable links
-- **📱 QR Code Generation:** Generate QR codes for easy mobile sharing
-- **📊 Click Tracking:** Monitor how many times your links are clicked
-- **💾 Local Storage:** All data stored locally in your browser (privacy-first)
-- **📱 Responsive Design:** Works perfectly on desktop, tablet, and mobile
-- **🎨 Modern UI:** Beautiful gradient design with smooth animations
-- **📤 Easy Sharing:** One-click copy and share functionality
-- **🗂️ Link Management:** View and manage all your shortened URLs
-- **🌙 Dark Mode Support:** Toggle between light and dark themes
+here are some cool fetures!!
+
+- URL Shortening:** Convert long URLs into short, shareable links
+- QR Code Generation:** Generate QR codes for easy mobile sharing
+- Click Tracking:** Monitor how many times your links are clicked
+- Local Storage:** All data stored locally in your browser (privacy-first)
+- Responsive Design:** Works perfectly on desktop, tablet, and mobile
+- Modern UI:** Beautiful gradient design with smooth animations
+- Easy Sharing:** One-click copy and share functionality
+- Link Management:** View and manage all your shortened URLs
 
 ## 🚀 Getting Started
 
@@ -160,3 +161,5 @@ If you find this project helpful, consider supporting the development:
 ## 📞 Contact
 
 Have questions or suggestions? Reach out through the [Contact page](/contact) or create an issue on GitHub.
+
+again thank you :)
