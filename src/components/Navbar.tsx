@@ -17,6 +17,7 @@ import { useTheme } from "../contexts/ThemeContext";
 const navLinks = [
   { name: "Home", to: "/" },
   { name: "My Links", to: "/my-links" },
+  { name: "Time", to: "/time" },
   { name: "Contact", to: "/contact" },
   { name: "About", to: "/about" },
   //   { name: "Privacy", to: "/privacy" },
