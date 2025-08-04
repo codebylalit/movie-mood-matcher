@@ -15,7 +15,7 @@ here are some cool fetures!!
 - Easy Sharing:** One-click copy and share functionality
 - Link Management:** View and manage all your shortened URLs
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -84,51 +84,6 @@ src/
 - **Icons:** Heroicons
 - **Build Tool:** Create React App
 
-## Design System
-
-The app uses a custom color palette:
-
-- **Vanilla:** `#FFF3B0` - Background color
-- **Mustard:** `#E09F3E` - Primary accent
-- **Dark Slate:** `#335C67` - Text and borders
-- **Red Brick:** `#9E2A2B` - Error states
-
-## 🔧 Key Features Explained
-
-### URL Shortening
-
-- Validates URLs and automatically adds `https://` if missing
-- Generates unique 6-character IDs for short URLs
-- Stores data locally using LocalForage
-
-### QR Code Generation
-
-- Automatically generates QR codes for each shortened URL
-- Responsive sizing based on screen size
-- Downloadable as PNG images
-
-### Link Management
-
-- View all shortened URLs in one place
-- Track click counts for each link
-- Delete unwanted links
-- Copy links to clipboard with one click
-
-### Privacy-First Approach
-
-- All data stored locally in your browser
-- No server-side storage of your URLs
-- No tracking or analytics
-
-## 📱 Responsive Design
-
-The app is fully responsive with:
-
-- Mobile-first design approach
-- Adaptive font sizing
-- Responsive QR code sizing
-- Touch-friendly interface
-
 ## 🚀 Deployment
 
 The app can be deployed to any static hosting service:
@@ -146,9 +101,6 @@ The app can be deployed to any static hosting service:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
-
-This project is licensed under the MIT License.
 
 ## 🙏 Support
 
