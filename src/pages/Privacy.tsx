@@ -1,11 +1,11 @@
 import React from "react";
 
 const Privacy: React.FC = () => (
-  <div className="max-w-2xl mx-auto px-4 py-16 font-sans">
-    <h1 className="text-3xl font-extrabold text-darkslate mb-6 font-sans">
+  <div className="max-w-2xl mx-auto px-4 py-16 font-sans text-darkslate dark:text-vanilla">
+    <h1 className="text-3xl font-extrabold text-darkslate dark:text-vanilla mb-6 font-sans">
       Privacy Policy
     </h1>
-    <div className="space-y-6 text-darkslate/90 text-base">
+    <div className="space-y-6 text-darkslate/90 dark:text-vanilla/90 text-base">
       <p>
         <b>Shortify</b> values your privacy. We do not track, sell, or share
         your personal data. All URLs you shorten are stored only in your browser

@@ -23,7 +23,7 @@
   }
   
   body {
-    @apply bg-vanilla text-darkslate;
+    @apply bg-vanilla text-darkslate dark:bg-darkslate dark:text-vanilla transition-colors duration-300;
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
   }

@@ -108,7 +108,7 @@ const MyLinks: React.FC = () => {
       <main className="flex-1 flex flex-col items-center px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
         {/* Header Section */}
         <div className="w-full max-w-4xl mb-8">
-          <div className="text-center mb-6">
+          <div className="text-center mb-6 text-darkslate dark:text-vanilla">
             <div className="flex items-center justify-center gap-3 mb-4">
               <LinkIcon className="w-8 h-8 text-mustard dark:text-vanilla" />
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-darkslate dark:text-vanilla">
@@ -122,33 +122,33 @@ const MyLinks: React.FC = () => {
 
           {/* Stats Section
           {urls.length > 0 && (
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 mb-6 border border-darkslate/10 shadow-lg">
+            <div className="bg-white/80 dark:bg-darkslate/80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 mb-6 border border-darkslate/10 dark:border-vanilla/10 shadow-lg text-darkslate dark:text-vanilla">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
                 <div className="space-y-2">
-                  <div className="text-2xl sm:text-3xl font-bold text-darkslate">
+                  <div className="text-2xl sm:text-3xl font-bold text-darkslate dark:text-vanilla">
                     {urls.length}
                   </div>
-                  <div className="text-sm sm:text-base text-darkslate/70">
+                  <div className="text-sm sm:text-base text-darkslate/70 dark:text-vanilla/70">
                     Total Links
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <div className="text-2xl sm:text-3xl font-bold text-mustard">
+                  <div className="text-2xl sm:text-3xl font-bold text-mustard dark:text-vanilla">
                     {urls.reduce((sum, url) => sum + url.clicks, 0)}
                   </div>
-                  <div className="text-sm sm:text-base text-darkslate/70">
+                  <div className="text-sm sm:text-base text-darkslate/70 dark:text-vanilla/70">
                     Total Clicks
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <div className="text-2xl sm:text-3xl font-bold text-redbrick">
+                  <div className="text-2xl sm:text-3xl font-bold text-redbrick dark:text-vanilla">
                     {Math.round(
                       (urls.reduce((sum, url) => sum + url.clicks, 0) /
                         urls.length) *
                         10
                     ) / 10}
                   </div>
-                  <div className="text-sm sm:text-base text-darkslate/70">
+                  <div className="text-sm sm:text-base text-darkslate/70 dark:text-vanilla/70">
                     Avg. Clicks
                   </div>
                 </div>

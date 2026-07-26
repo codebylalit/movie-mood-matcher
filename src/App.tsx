@@ -13,7 +13,7 @@ import TimeComponent from "./pages/Time";
 
 const App: React.FC = () => (
   <Router>
-    <div className="flex flex-col bg-gradient-to-b from-vanilla via-mustard/15 p-4 sm:p-8 min-h-screen">
+    <div className="flex min-h-screen flex-col bg-gradient-to-b from-vanilla via-mustard/15 to-vanilla text-darkslate transition-colors duration-300 dark:from-darkslate dark:via-darkslate/95 dark:to-darkslate dark:text-vanilla p-4 sm:p-8">
       <Navbar />
       <div className="flex-1">
         <Routes>

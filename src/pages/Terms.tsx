@@ -1,12 +1,12 @@
 import React from "react";
 
 const Terms: React.FC = () => (
-  <div className="min-h-screen w-full flex flex-col">
+  <div className="min-h-screen w-full flex flex-col text-darkslate dark:text-vanilla">
     <div className="max-w-2xl mx-auto px-4 py-16 font-sans flex-1">
-      <h1 className="text-3xl font-extrabold text-darkslate mb-6 font-sans">
+      <h1 className="text-3xl font-extrabold text-darkslate dark:text-vanilla mb-6 font-sans">
         Terms and Conditions
       </h1>
-      <div className="space-y-6 text-darkslate/90 text-base">
+      <div className="space-y-6 text-darkslate/90 dark:text-vanilla/90 text-base">
         <p>
           Welcome to <b>Shortify</b>! By accessing or using our service, you
           agree to be bound by these Terms and Conditions. Please read them
