@@ -25,7 +25,7 @@ const GoogleAnalyticsBootstrap: React.FC = () => {
       document.head.appendChild(script);
     }
 
-    const analyticsWindow = window as Window & { dataLayer: unknown[] };
+    const analyticsWindow = window as unknown as { dataLayer?: unknown[] };
     analyticsWindow.dataLayer = analyticsWindow.dataLayer || [];
 
     function gtag(...args: unknown[]) {
