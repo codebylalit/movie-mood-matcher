@@ -2,19 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import localforage from "localforage";
 // @ts-ignore
 import { QRCodeCanvas } from "qrcode.react";
-import {
-  LinkIcon,
-  HeartIcon,
-  SparklesIcon,
-  ArrowDownTrayIcon,
-} from "@heroicons/react/24/solid";
+import { SparklesIcon } from "@heroicons/react/24/solid";
 import {
   ArrowDownTrayIcon as ArrowDownTrayOutlineIcon,
   ClipboardDocumentIcon,
   EyeIcon,
   ShareIcon,
 } from "@heroicons/react/24/outline";
-import Footer from "../components/Footer";
 import { useTheme } from "../contexts/ThemeContext";
 
 const SHORTIFY_PREFIX = window.location.origin + "/s/";
@@ -97,7 +91,7 @@ const Shortify: React.FC = () => {
           if (url) {
             // Update click count
             const updatedUrls = storedUrls.map((u) =>
-              u.id === shortId ? { ...u, clicks: u.clicks + 1 } : u
+              u.id === shortId ? { ...u, clicks: u.clicks + 1 } : u,
             );
             await localforage.setItem("shortify-urls", updatedUrls);
             // Redirect to original URL immediately
@@ -121,7 +115,7 @@ const Shortify: React.FC = () => {
           if (url) {
             // Update click count
             const updatedUrls = storedUrls.map((u) =>
-              u.id === shortId ? { ...u, clicks: u.clicks + 1 } : u
+              u.id === shortId ? { ...u, clicks: u.clicks + 1 } : u,
             );
             await localforage.setItem("shortify-urls", updatedUrls);
             // Redirect to original URL immediately
@@ -177,7 +171,7 @@ const Shortify: React.FC = () => {
 
   const handleVisit = (id: string, url: string) => {
     setUrls((prev) =>
-      prev.map((u) => (u.id === id ? { ...u, clicks: u.clicks + 1 } : u))
+      prev.map((u) => (u.id === id ? { ...u, clicks: u.clicks + 1 } : u)),
     );
     window.open(url, "_blank");
   };

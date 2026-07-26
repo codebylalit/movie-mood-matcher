@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
-import Footer from "../components/Footer";
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/manbeezw";
 

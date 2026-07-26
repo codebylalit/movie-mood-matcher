@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import {
-  LinkIcon,
-  SparklesIcon,
-  ShieldCheckIcon,
-  DocumentTextIcon,
-} from "@heroicons/react/24/solid";
+import { LinkIcon } from "@heroicons/react/24/solid";
 import {
   Bars3Icon,
   XMarkIcon,
