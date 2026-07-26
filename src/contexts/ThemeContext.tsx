@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import localforage from 'localforage';
+import React, { createContext, useContext, useEffect, useState } from "react";
+import localforage from "localforage";
 
 interface ThemeContextType {
   isDark: boolean;
@@ -30,12 +30,14 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     // Load theme preference from localStorage
     const loadTheme = async () => {
       try {
-        const savedTheme = await localforage.getItem('shortify-dark');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const savedTheme = await localforage.getItem("shortify-dark");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
         const theme = savedTheme !== null ? savedTheme : prefersDark;
         setIsDark(theme === true);
       } catch (error) {
-        console.error('Error loading theme:', error);
+        console.error("Error loading theme:", error);
       }
     };
 
@@ -44,14 +46,14 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
   useEffect(() => {
     // Apply theme to document
-    document.documentElement.classList.toggle('dark', isDark);
-    
+    document.documentElement.classList.toggle("dark", isDark);
+
     // Save theme preference
     const saveTheme = async () => {
       try {
-        await localforage.setItem('shortify-dark', isDark);
+        await localforage.setItem("shortify-dark", isDark);
       } catch (error) {
-        console.error('Error saving theme:', error);
+        console.error("Error saving theme:", error);
       }
     };
 
@@ -59,7 +61,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   }, [isDark]);
 
   const toggleTheme = () => {
-    setIsDark(prev => !prev);
+    setIsDark((prev) => !prev);
   };
 
   return (
@@ -67,4 +69,4 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       {children}
     </ThemeContext.Provider>
   );
-}; 
+};
