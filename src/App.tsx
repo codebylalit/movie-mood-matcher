@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 import About from "./pages/About";
 import BuyMeACoffee from "./pages/BuyMeACoffee";
 import MyLinks from "./pages/MyLinks";
-import TimeComponent from "../time";
+import TimeComponent from "./pages/Time";
 
 const App: React.FC = () => (
   <Router>

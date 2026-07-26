@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 
 declare global {
   interface Window {
@@ -9,17 +9,17 @@ declare global {
 interface AdSenseProps {
   slot?: string;
   style?: React.CSSProperties;
-  format?: 'auto' | 'fluid';
+  format?: "auto" | "fluid";
   layout?: string;
   className?: string;
 }
 
 const AdSense: React.FC<AdSenseProps> = ({
-  slot = '',
-  style = { display: 'block' },
-  format = 'auto',
+  slot = "",
+  style = { display: "block" },
+  format = "auto",
   layout,
-  className = '',
+  className = "",
 }) => {
   useEffect(() => {
     try {
@@ -28,12 +28,21 @@ const AdSense: React.FC<AdSenseProps> = ({
         window.adsbygoogle.push({});
       }
     } catch (err) {
-      console.error('AdSense error:', err);
+      console.error("AdSense error:", err);
     }
   }, []);
 
+  if (!slot) {
+    return null;
+  }
+
   return (
-    <div className={`adsense-container ${className}`}>
+    <section
+      className={`adsense-container ${className}`}
+      aria-label="Advertisement"
+      role="complementary"
+    >
+      <div className="adsense-label">Advertisement</div>
       <ins
         className="adsbygoogle"
         style={style}
@@ -41,10 +50,10 @@ const AdSense: React.FC<AdSenseProps> = ({
         data-ad-slot={slot}
         data-ad-format={format}
         data-full-width-responsive="true"
-        {...(layout && { 'data-ad-layout': layout })}
+        {...(layout && { "data-ad-layout": layout })}
       />
-    </div>
+    </section>
   );
 };
 
-export default AdSense; 
+export default AdSense;

@@ -129,6 +129,12 @@
   .btn-secondary {
     @apply bg-darkslate text-vanilla hover:bg-mustard hover:text-darkslate dark:bg-vanilla dark:text-darkslate dark:hover:bg-mustard dark:hover:text-vanilla;
   }
+  .adsense-container {
+    @apply w-full my-6 rounded-2xl border border-darkslate/10 dark:border-vanilla/10 bg-white/80 dark:bg-darkslate/80 p-4 sm:p-5 shadow-sm;
+  }
+  .adsense-label {
+    @apply mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-darkslate/50 dark:text-vanilla/50;
+  }
   .card {
     @apply bg-white bg-opacity-80 rounded-xl shadow p-3 border border-darkslate/10 dark:bg-darkslate dark:bg-opacity-80 dark:border-vanilla/10;
   }
