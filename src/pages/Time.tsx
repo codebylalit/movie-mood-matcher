@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import SeoHead from "../components/SeoHead";
+import { createBreadcrumbSchema } from "../seo/seo";
 
 const formatTime = (date: Date) =>
   date.toLocaleTimeString([], {
@@ -28,6 +30,19 @@ const Time: React.FC = () => {
 
   return (
     <div className="max-w-2xl mx-auto py-16 px-4 text-center">
+      <SeoHead
+        title="Time | Shortify"
+        description="View the current local time inside the Shortify app."
+        keywords={["Time", "Shortify", "Local Time"]}
+        path="/time"
+        noindex
+        schema={[
+          createBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Time", path: "/time" },
+          ]),
+        ]}
+      />
       <h1 className="text-responsive-2xl font-bold text-darkslate dark:text-vanilla mb-4">
         Time
       </h1>

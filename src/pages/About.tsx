@@ -1,7 +1,29 @@
 import React from "react";
+import SeoHead from "../components/SeoHead";
+import { createBreadcrumbSchema } from "../seo/seo";
 
 const About: React.FC = () => (
-  <div className="max-w-2xl mx-auto py-16 px-4 text-darkslate dark:text-vanilla">
+  <main
+    id="main-content"
+    className="max-w-2xl mx-auto py-16 px-4 text-darkslate dark:text-vanilla"
+  >
+    <SeoHead
+      title="About Shortify | Free URL Shortener Team"
+      description="Learn about Shortify, the free URL shortener and QR code generator built for simple, privacy-friendly link sharing."
+      keywords={[
+        "About Shortify",
+        "Free URL Shortener",
+        "QR Code Generator",
+        "Bitly Alternative",
+      ]}
+      path="/about"
+      schema={[
+        createBreadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ]),
+      ]}
+    />
     <h1 className="text-responsive-2xl font-bold text-darkslate dark:text-vanilla mb-6">
       About Us
     </h1>
@@ -51,7 +73,7 @@ const About: React.FC = () => (
         </p>
       </div>
     </div>
-  </div>
+  </main>
 );
 
 export default About;

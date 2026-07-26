@@ -1,7 +1,29 @@
 import React from "react";
+import SeoHead from "../components/SeoHead";
+import { createBreadcrumbSchema } from "../seo/seo";
 
 const Privacy: React.FC = () => (
-  <div className="max-w-2xl mx-auto px-4 py-16 font-sans text-darkslate dark:text-vanilla">
+  <main
+    id="main-content"
+    className="max-w-2xl mx-auto px-4 py-16 font-sans text-darkslate dark:text-vanilla"
+  >
+    <SeoHead
+      title="Privacy Policy | Shortify"
+      description="Read Shortify's privacy policy for the free URL shortener and QR code generator."
+      keywords={[
+        "Privacy Policy",
+        "Free URL Shortener",
+        "QR Code Generator",
+        "Shortify",
+      ]}
+      path="/privacy"
+      schema={[
+        createBreadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Privacy", path: "/privacy" },
+        ]),
+      ]}
+    />
     <h1 className="text-3xl font-extrabold text-darkslate dark:text-vanilla mb-6 font-sans">
       Privacy Policy
     </h1>
@@ -49,7 +71,7 @@ const Privacy: React.FC = () => (
         </p>
       </div>
     </div>
-  </div>
+  </main>
 );
 
 export default Privacy;

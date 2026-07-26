@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
+import SeoHead from "../components/SeoHead";
+import { createBreadcrumbSchema } from "../seo/seo";
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/manbeezw";
 
@@ -8,7 +10,24 @@ const Contact: React.FC = () => {
   const [loading, setLoading] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <main id="main-content" className="min-h-screen flex flex-col">
+      <SeoHead
+        title="Contact Shortify | Free URL Shortener Support"
+        description="Contact the Shortify team about the free URL shortener, QR code generator, and Bitly alternative experience."
+        keywords={[
+          "Contact Shortify",
+          "Free URL Shortener",
+          "QR Code Generator",
+          "Bitly Alternative",
+        ]}
+        path="/contact"
+        schema={[
+          createBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Contact", path: "/contact" },
+          ]),
+        ]}
+      />
       <div className="flex-1 max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 font-sans flex flex-col items-center justify-center">
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-darkslate dark:text-vanilla mb-4 sm:mb-6 font-sans text-center">
           Contact Us
@@ -93,7 +112,7 @@ const Contact: React.FC = () => {
           </form>
         )}
       </div>
-    </div>
+    </main>
   );
 };
 

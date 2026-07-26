@@ -11,6 +11,8 @@ import {
   EyeIcon,
 } from "@heroicons/react/24/outline";
 import { useTheme } from "../contexts/ThemeContext";
+import SeoHead from "../components/SeoHead";
+import { createBreadcrumbSchema } from "../seo/seo";
 
 type ShortUrl = {
   id: string;
@@ -105,6 +107,19 @@ const MyLinks: React.FC = () => {
 
   return (
     <div className="min-h-screen w-full flex flex-col">
+      <SeoHead
+        title="My Links | Shortify"
+        description="Review, copy, share, and manage your saved shortened URLs inside Shortify."
+        keywords={["My Links", "Shortify", "URL Shortener"]}
+        path="/my-links"
+        noindex
+        schema={[
+          createBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "My Links", path: "/my-links" },
+          ]),
+        ]}
+      />
       <main className="flex-1 flex flex-col items-center px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
         {/* Header Section */}
         <div className="w-full max-w-4xl mb-8">

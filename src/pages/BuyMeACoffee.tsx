@@ -1,8 +1,23 @@
 import React from "react";
+import SeoHead from "../components/SeoHead";
+import { createBreadcrumbSchema } from "../seo/seo";
 
 const BuyMeACoffee: React.FC = () => {
   return (
     <div className="relative max-w-xl mx-auto py-14 sm:py-12 md:py-12 lg:py-20 px-4 sm:px-6 md:px-8 flex flex-col items-center">
+      <SeoHead
+        title="Support Shortify | Buy Us a Coffee"
+        description="Support the Shortify team and help keep the free URL shortener and QR code generator growing."
+        keywords={["Support Shortify", "Buy Me a Coffee", "Free URL Shortener"]}
+        path="/buy-me"
+        noindex
+        schema={[
+          createBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Support", path: "/buy-me" },
+          ]),
+        ]}
+      />
       {/* Arrow PNG image */}
       {/* Coffee Widget Doodles - positioned around the bottom right corner where the widget appears */}
       <div className="fixed bottom-8 sm:bottom-8 md:bottom-12 lg:bottom-20 right-2 sm:right-4 md:right-6 w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 pointer-events-none z-10">
@@ -53,7 +68,11 @@ const BuyMeACoffee: React.FC = () => {
         <div className="absolute -top-24 sm:-top-10 right-20 sm:right-16 w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rotate-[90deg] transform translate-x-2 sm:translate-x-4 md:translate-x-6 -translate-y-2 sm:-translate-y-4">
           <img
             src="arrows1.svg"
-            alt="Decorative arrow"
+            alt="Decorative arrow illustration highlighting the support widget"
+            width="192"
+            height="192"
+            loading="lazy"
+            decoding="async"
             className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 opacity-80 text-mustard"
           />
         </div>{" "}
@@ -75,7 +94,11 @@ const BuyMeACoffee: React.FC = () => {
       <div className="relative flex justify-center items-center">
         <img
           src="Tea.svg"
-          alt="Decorative tea cup"
+          alt="Tea cup illustration used to support the Shortify coffee appeal"
+          width="224"
+          height="224"
+          loading="lazy"
+          decoding="async"
           className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 opacity-80 text-mustard"
         />
       </div>

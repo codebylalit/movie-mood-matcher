@@ -1,7 +1,29 @@
 import React from "react";
+import SeoHead from "../components/SeoHead";
+import { createBreadcrumbSchema } from "../seo/seo";
 
 const Terms: React.FC = () => (
-  <div className="min-h-screen w-full flex flex-col text-darkslate dark:text-vanilla">
+  <main
+    id="main-content"
+    className="min-h-screen w-full flex flex-col text-darkslate dark:text-vanilla"
+  >
+    <SeoHead
+      title="Terms of Service | Shortify"
+      description="Review the terms of service for Shortify, the free URL shortener, link shortener, and QR code generator."
+      keywords={[
+        "Terms of Service",
+        "Free URL Shortener",
+        "QR Code Generator",
+        "Bitly Alternative",
+      ]}
+      path="/terms"
+      schema={[
+        createBreadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Terms", path: "/terms" },
+        ]),
+      ]}
+    />
     <div className="max-w-2xl mx-auto px-4 py-16 font-sans flex-1">
       <h1 className="text-3xl font-extrabold text-darkslate dark:text-vanilla mb-6 font-sans">
         Terms and Conditions
@@ -75,7 +97,7 @@ const Terms: React.FC = () => (
         </div>
       </div>
     </div>
-  </div>
+  </main>
 );
 
 export default Terms;
