@@ -3,11 +3,14 @@ import { createRoot } from "react-dom/client";
 import { Analytics } from "@vercel/analytics/react";
 import "./index.css";
 import App from "./App";
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 const root = createRoot(document.getElementById("root")!);
 root.render(
   <React.StrictMode>
-    <App />
-    <Analytics />
+    <ThemeProvider>
+      <App />
+      <Analytics />
+    </ThemeProvider>
   </React.StrictMode>,
 );
