@@ -57,12 +57,12 @@ const MyLinks: React.FC = () => {
 
   const handleVisit = (id: string, url: string) => {
     setUrls((prev) =>
-      prev.map((u) => (u.id === id ? { ...u, clicks: u.clicks + 1 } : u))
+      prev.map((u) => (u.id === id ? { ...u, clicks: u.clicks + 1 } : u)),
     );
     window.open(url, "_blank");
     localforage.setItem(
       "shortify-urls",
-      urls.map((u) => (u.id === id ? { ...u, clicks: u.clicks + 1 } : u))
+      urls.map((u) => (u.id === id ? { ...u, clicks: u.clicks + 1 } : u)),
     );
   };
 
